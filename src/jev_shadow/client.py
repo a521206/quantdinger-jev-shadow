@@ -28,6 +28,16 @@ QUESTIONS: dict[str, dict[str, Any]] = {
             "insufficient": "There is not enough current orderflow evidence to judge alignment.",
         },
     },
+    "directional_view": {
+        "type": "choice",
+        "instructions": "Identify the directional bias supported by the supplied point-in-time evidence.",
+        "criteria": {
+            "long": "The evidence supports a bullish/long opportunity.",
+            "short": "The evidence supports a bearish/short opportunity.",
+            "neutral": "The evidence does not support a directional opportunity.",
+            "insufficient": "There is not enough evidence to identify a direction.",
+        },
+    },
     "market_regime": {
         "type": "choice",
         "instructions": "Judge whether the current market regime is suitable for this orderflow opportunity.",
@@ -108,13 +118,21 @@ class JevClient:
             answers = answers["answers"]
         if not isinstance(answers, Mapping):
             raise TypeError("Jev response did not contain an answers object")
-        normalized = {
-            name: dict(answer)
-            for name, answer in answers.items()
-            if name in QUESTIONS and isinstance(answer, Mapping)
-        }
+        normalized = {name: dict(answers[name]) for name in QUESTIONS if isinstance(answers.get(name), Mapping)}
         if set(normalized) != set(QUESTIONS):
-            raise ValueError("Jev response did not contain every configured question")
+            missing = sorted(set(QUESTIONS) - set(normalized))
+            raise ValueError(f"Jev response missing questions: {', '.join(missing)}")
+        for name, answer in normalized.items():
+            choice = answer.get("choice")
+            allowed = QUESTIONS[name]["criteria"]
+            confidence = answer.get("confidence")
+            rationale = answer.get("rationale")
+            if choice not in allowed:
+                raise ValueError(f"Jev response has invalid {name} choice: {choice!r}")
+            if isinstance(confidence, bool) or not isinstance(confidence, (int, float)) or not 0 <= confidence <= 1:
+                raise ValueError(f"Jev response has invalid {name} confidence")
+            if not isinstance(rationale, str) or not rationale.strip():
+                raise ValueError(f"Jev response has missing {name} rationale")
         return normalized
 
     def close(self) -> None:

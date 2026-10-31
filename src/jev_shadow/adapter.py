@@ -86,7 +86,14 @@ def orderflow_contexts(payload: Mapping[str, Any]) -> list[dict[str, Any]]:
                     "bar": trace.get("bar"),
                     "candle_features": trace.get("candle_features"),
                     "volume_multiple_vs_prior_20": trace.get("volume_multiple_vs_prior_20"),
-                    "volume_rank_in_session": trace.get("volume_rank_in_session"),
+                    "volume_rank_vs_prior_20": trace.get("volume_rank_vs_prior_20"),
+                    "volume_percentile_vs_prior_20": trace.get("volume_percentile_vs_prior_20"),
+                    "range": trace.get("range"),
+                    "body": trace.get("body"),
+                    "clv": trace.get("clv"),
+                    "delta_proxy": trace.get("delta_proxy"),
+                    "volume_multiple_vs_prior_5": trace.get("volume_multiple_vs_prior_5"),
+                    "range_multiple_vs_prior_5": trace.get("range_multiple_vs_prior_5"),
                     "oi_change_vs_prior_bar": trace.get("oi_change_vs_prior_bar"),
                     "target_range": trace.get("target_range"),
                     "target_clv": trace.get("target_clv"),
@@ -94,13 +101,40 @@ def orderflow_contexts(payload: Mapping[str, Any]) -> list[dict[str, Any]]:
                     "cumulative_delta_proxy": trace.get("cumulative_delta_proxy"),
                 },
                 "causal_features": trace.get("causal_features"),
+                "causal_locations": trace.get("causal_locations"),
                 "source": {
                     "artifact_type": "orderflow_full_day_trace",
                     "trace_scope": f"complete bars available through {signal_time}",
+                    "feature_window": "09:15 <= bar time <= signal time",
+                    "volume_rank_scope": "prior 20 bars only",
                 },
             }
             contexts.append(context)
     return contexts
+
+
+def orderflow_audit_records(payload: Mapping[str, Any]) -> list[dict[str, Any]]:
+    """Build post-hoc oracle metadata without putting it in Jev state."""
+    target_date = str(payload.get("date") or "")
+    records: list[dict[str, Any]] = []
+    for timeframe, section in (payload.get("timeframes") or {}).items():
+        if not isinstance(section, Mapping) or not isinstance(section.get("oracle_trades"), list):
+            continue
+        for ordinal, opportunity in enumerate(section["oracle_trades"], 1):
+            if not isinstance(opportunity, Mapping):
+                raise TypeError("oracle opportunity must be a JSON object")
+            signal_time = str(opportunity.get("signal_time") or "")
+            if not signal_time:
+                raise ValueError("oracle opportunity is missing signal_time")
+            record = dict(opportunity)
+            record.update({
+                "candidate_id": f"orderflow-{target_date}-{timeframe}-{signal_time}-{ordinal}",
+                "date": target_date,
+                "timeframe": str(timeframe),
+                "oracle_trade_present": True,
+            })
+            records.append(record)
+    return records
 
 
 def write_orderflow_contexts(input_path: Path, output_path: Path) -> int:
@@ -115,8 +149,20 @@ def write_orderflow_contexts(input_path: Path, output_path: Path) -> int:
     return len(contexts)
 
 
+def write_orderflow_audit(input_path: Path, output_path: Path) -> int:
+    payload = json.loads(input_path.read_text(encoding="utf-8"))
+    if not isinstance(payload, Mapping):
+        raise TypeError("orderflow trace must be a JSON object")
+    records = orderflow_audit_records(payload)
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    with output_path.open("w", encoding="utf-8") as stream:
+        for record in records:
+            stream.write(json.dumps(record, sort_keys=True, separators=(",", ":")) + "\n")
+    return len(records)
+
+
 def run_orderflow_trace(
-    niftyzoning_root: Path, date: str, output_path: Path,
+    niftyzoning_root: Path, date: str, output_path: Path, audit_output_path: Path | None = None,
 ) -> int:
     """Run NiftyZoning's research trace, then project its oracle times causally."""
     trace_script = niftyzoning_root / "scripts/orderflow/experiments/trace_orderflow_day.py"
@@ -129,10 +175,18 @@ def run_orderflow_trace(
             cwd=niftyzoning_root, check=True,
         )
         trace_path = trace_dir / f"orderflow-{date[:4]}-{date[4:6]}-{date[6:]}-full-day-trace.json"
-        return write_orderflow_contexts(trace_path, output_path)
+        count = write_orderflow_contexts(trace_path, output_path)
+        if audit_output_path is not None:
+            write_orderflow_audit(trace_path, audit_output_path)
+        return count
 
 
 __all__ = [
-    "context_from_candidate", "orderflow_contexts", "run_orderflow_trace",
-    "write_contexts", "write_orderflow_contexts",
+    "context_from_candidate",
+    "orderflow_audit_records",
+    "orderflow_contexts",
+    "run_orderflow_trace",
+    "write_contexts",
+    "write_orderflow_audit",
+    "write_orderflow_contexts",
 ]

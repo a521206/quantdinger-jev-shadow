@@ -52,7 +52,8 @@ For the orderflow oracle timestamps, run NiftyZoning's research trace and build 
 python -m jev_shadow.cli build-orderflow-contexts `
   --niftyzoning-root 'C:\Users\agraw\Python\NiftyZoning' `
   --date 20260929 `
-  --output .\data\output\orderflow_contexts_20260929.jsonl
+  --output .\data\output\orderflow_contexts_20260929.jsonl `
+  --audit-output .\data\output\orderflow_oracle_audit_20260929.jsonl
 ```
 
 This uses oracle timestamps only to select which observed bars to inspect. Oracle direction, entry/exit prices, future bars, and outcomes are not sent to Jev.
@@ -63,10 +64,19 @@ An existing full-day trace can be projected without rerunning NiftyZoning:
 python -m jev_shadow.cli build-orderflow-contexts `
   --trace 'C:\path\to\orderflow-full-day-trace.json' `
   --date 20260929 `
-  --output .\data\output\orderflow_contexts_20260929.jsonl
+  --output .\data\output\orderflow_contexts_20260929.jsonl `
+  --audit-output .\data\output\orderflow_oracle_audit_20260929.jsonl
 ```
 
-Generated result and full-day context JSONL files should be kept under ignored output directories or otherwise excluded from commits. `data/orderflow_context_sample.jsonl` is a small tracked fixture for inspecting the expected context shape.
+The audit file contains oracle direction and outcome metadata for post-hoc comparison only; it is never sent to Jev. Compare it with Jev results using:
+
+```powershell
+python -m jev_shadow.cli analyze-results `
+  --input .\data\output\jev_shadow\orderflow_results_20260929.jsonl `
+  --oracle-audit .\data\output\orderflow_oracle_audit_20260929.jsonl
+```
+
+Generated result, audit, and full-day context JSONL files should be kept under ignored output directories or otherwise excluded from commits. `data/orderflow_context_sample.jsonl` is a small tracked fixture for inspecting the expected context shape.
 
 ## Boundaries
 

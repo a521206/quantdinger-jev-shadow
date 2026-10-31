@@ -23,7 +23,11 @@ def load_records(input_path: Path) -> list[Mapping[str, Any]]:
     return records
 
 
-def analyze_records(records: list[Mapping[str, Any]]) -> dict[str, Any]:
+def analyze_records(
+    records: list[Mapping[str, Any]],
+    *,
+    audit_records: list[Mapping[str, Any]] | None = None,
+) -> dict[str, Any]:
     statuses = Counter(str(record.get("status", "unknown")) for record in records)
     convergence = Counter(str(record.get("shadow_convergence", "unknown")) for record in records)
     timeframes = Counter(
@@ -57,7 +61,7 @@ def analyze_records(records: list[Mapping[str, Any]]) -> dict[str, Any]:
             "mean_ms": sum(latencies) / len(latencies),
             "max_ms": max(latencies),
         }
-    return {
+    summary = {
         "total": len(records),
         "successful": statuses.get("ok", 0),
         "failed": sum(count for status, count in statuses.items() if status != "ok"),
@@ -68,6 +72,33 @@ def analyze_records(records: list[Mapping[str, Any]]) -> dict[str, Any]:
         "latency_ms": latency_summary,
         "errors": errors,
     }
+    if audit_records is not None:
+        by_id = {str(item.get("candidate_id")): item for item in audit_records}
+        matched = 0
+        direction_comparisons = 0
+        direction_agreements = 0
+        for record in records:
+            audit = by_id.get(str(record.get("candidate_id")))
+            response = record.get("response")
+            if audit is None:
+                continue
+            matched += 1
+            oracle_direction = str(audit.get("direction") or "").lower()
+            answer = response.get("directional_view") if isinstance(response, Mapping) else None
+            jev_direction = answer.get("choice") if isinstance(answer, Mapping) else None
+            if oracle_direction in {"long", "short"} and jev_direction in {"long", "short"}:
+                direction_comparisons += 1
+                direction_agreements += int(oracle_direction == jev_direction)
+        summary["oracle_comparison"] = {
+            "audit_records": len(audit_records),
+            "matched_results": matched,
+            "direction_comparisons": direction_comparisons,
+            "direction_agreements": direction_agreements,
+            "direction_agreement_rate": (
+                direction_agreements / direction_comparisons if direction_comparisons else None
+            ),
+        }
+    return summary
 
 
 def render_markdown(summary: Mapping[str, Any], source_name: str) -> str:
@@ -95,6 +126,14 @@ def render_markdown(summary: Mapping[str, Any], source_name: str) -> str:
         lines.extend(["", "## Jev Assessment", ""])
         for name, counts in dimensions.items():
             lines.append(f"- `{name}`: {_format_counts(counts)}")
+    comparison = summary.get("oracle_comparison")
+    if comparison:
+        lines.extend(["", "## Oracle Comparison", ""])
+        lines.extend([
+            f"- Audit records: {comparison['audit_records']}",
+            f"- Matched results: {comparison['matched_results']}",
+            f"- Direction agreement: {_format_rate(comparison['direction_agreement_rate'])}",
+        ])
     errors = summary.get("errors", [])
     if errors:
         lines.extend(["", "## Failures", ""])
@@ -155,6 +194,18 @@ def render_terminal(summary: Mapping[str, Any], source_name: str) -> str:
             "Jev Assessment",
             tabulate(assessment_rows, headers=["Dimension", "Choice", "Count"], tablefmt="simple"),
         ])
+    comparison = summary.get("oracle_comparison")
+    if comparison:
+        lines.extend([
+            "", "Oracle Comparison",
+            tabulate([
+                ["Audit records", comparison["audit_records"]],
+                ["Matched results", comparison["matched_results"]],
+                ["Direction comparisons", comparison["direction_comparisons"]],
+                ["Direction agreements", comparison["direction_agreements"]],
+                ["Direction agreement rate", _format_rate(comparison["direction_agreement_rate"])],
+            ], headers=["Value", "Count"], tablefmt="simple"),
+        ])
 
     errors = summary.get("errors", [])
     if errors:
@@ -172,3 +223,7 @@ def render_terminal(summary: Mapping[str, Any], source_name: str) -> str:
 
 def _format_counts(counts: Mapping[str, int]) -> str:
     return "; ".join(f"{name} {count}" for name, count in counts.items()) or "none"
+
+
+def _format_rate(value: float | None) -> str:
+    return "n/a" if value is None else f"{value:.1%}"

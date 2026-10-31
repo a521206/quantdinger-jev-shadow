@@ -64,14 +64,27 @@ def converge(response: Mapping[str, Any] | None, *, min_confidence: float = 0.55
         or not isinstance(assessment, Mapping)
     ):
         return "invalid_response"
+    allowed = {
+        "signal_alignment": {"aligned", "mixed", "conflict", "insufficient"},
+        "market_regime": {"favorable", "neutral", "adverse", "insufficient"},
+        "trade_assessment": {"worth_taking", "not_worth_taking", "insufficient"},
+    }
+    for name, choices in allowed.items():
+        answer = response[name]
+        if answer.get("choice") not in choices:
+            return "invalid_response"
+        confidence = answer.get("confidence")
+        if isinstance(confidence, bool) or not isinstance(confidence, (int, float)) or not 0 <= confidence <= 1:
+            return "invalid_response"
     if assessment.get("choice") == "not_worth_taking":
         return "would_reject"
     confidences = [signal.get("confidence"), regime.get("confidence"), assessment.get("confidence")]
     if any(not isinstance(value, (int, float)) or float(value) < min_confidence for value in confidences):
         return "would_review"
-    if assessment.get("choice") == "insufficient":
+    if assessment.get("choice") == "insufficient" or signal.get("choice") == "insufficient" or regime.get("choice") == "insufficient":
         return "would_review"
-    directional_block = signal.get("choice") == "conflict" and regime.get("choice") == "adverse"
-    if directional_block:
+    if signal.get("choice") == "conflict" or regime.get("choice") == "adverse":
         return "would_review"
-    return "would_pass"
+    if assessment.get("choice") == "worth_taking" and signal.get("choice") in {"aligned", "mixed"}:
+        return "would_pass"
+    return "would_review"

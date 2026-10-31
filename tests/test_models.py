@@ -1,6 +1,6 @@
 import os
 
-from jev_shadow.adapter import context_from_candidate, orderflow_contexts
+from jev_shadow.adapter import context_from_candidate, orderflow_audit_records, orderflow_contexts
 from jev_shadow.analysis import analyze_records, render_markdown, render_terminal
 from jev_shadow.cli import main
 from jev_shadow.config import load_dotenv
@@ -25,6 +25,15 @@ def test_converge_reviews_low_confidence() -> None:
         "trade_assessment": {"choice": "worth_taking", "confidence": 0.9},
         "signal_alignment": {"choice": "aligned", "confidence": 0.9},
         "market_regime": {"choice": "neutral", "confidence": 0.5},
+    }
+    assert converge(response) == "would_review"
+
+
+def test_converge_reviews_adverse_regime_even_with_favorable_assessment() -> None:
+    response = {
+        "trade_assessment": {"choice": "worth_taking", "confidence": 0.9},
+        "signal_alignment": {"choice": "aligned", "confidence": 0.9},
+        "market_regime": {"choice": "adverse", "confidence": 0.9},
     }
     assert converge(response) == "would_review"
 
@@ -58,9 +67,12 @@ def test_orderflow_adapter_uses_causal_trace_at_oracle_times_only() -> None:
             "1m": {
                 "trace": [{
                     "time": "09:29",
-                    "bar": {"Close": 22642.0},
-                    "candle_features": {"clv": -0.4},
-                    "causal_features": {"causal_cutoff": "09:29"},
+                     "bar": {"Close": 22642.0},
+                     "candle_features": {"clv": -0.4},
+                     "volume_rank_vs_prior_20": 2,
+                     "volume_percentile_vs_prior_20": 0.8,
+                     "causal_features": {"causal_cutoff": "09:29"},
+                     "causal_locations": {"levels": {"PD_LOW": 22600.0}, "touched": ["PD_LOW"]},
                     "response": {"next_15_bars": {"close_change": -15}},
                 }],
                 "oracle_trades": [{
@@ -77,9 +89,17 @@ def test_orderflow_adapter_uses_causal_trace_at_oracle_times_only() -> None:
     assert len(contexts) == 1
     assert contexts[0]["time"] == "09:29"
     assert contexts[0]["market"]["bar"] == {"Close": 22642.0}
+    assert contexts[0]["market"]["volume_rank_vs_prior_20"] == 2
+    assert contexts[0]["causal_locations"]["touched"] == ["PD_LOW"]
+    assert contexts[0]["source"]["feature_window"] == "09:15 <= bar time <= signal time"
+    assert "volume_rank_in_session" not in contexts[0]["market"]
     assert "response" not in contexts[0]
     assert "direction" not in contexts[0]
     assert "oracle_exit_time" not in contexts[0]
+
+    audit = orderflow_audit_records(payload)
+    assert audit[0]["direction"] == "short"
+    assert audit[0]["oracle_exit_time"] == "15:00"
 
 
 def test_load_dotenv_preserves_environment_and_parses_values(tmp_path, monkeypatch) -> None:
@@ -140,6 +160,18 @@ def test_analysis_summarizes_results_and_failures() -> None:
     assert summary["dimensions"] == {"trade_assessment": {"worth_taking": 1}}
     assert "Contexts processed: 2" in report
     assert "provider failed" in report
+
+
+def test_analysis_compares_direction_against_separate_audit() -> None:
+    summary = analyze_records([
+        {
+            "candidate_id": "c1",
+            "status": "ok",
+            "shadow_convergence": "would_pass",
+            "response": {"directional_view": {"choice": "short"}},
+        },
+    ], audit_records=[{"candidate_id": "c1", "direction": "short"}])
+    assert summary["oracle_comparison"]["direction_agreement_rate"] == 1.0
 
 
 def test_terminal_analysis_uses_tables() -> None:
