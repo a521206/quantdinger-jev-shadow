@@ -30,7 +30,7 @@ To run the isolated client, prepare one point-in-time context JSON object per li
 $env:OPENROUTER_API_KEY = '<local secret>'
 $env:PYTHONPATH = 'src'
 python -m jev_shadow.cli run-jsonl `
-  --input .\contexts.jsonl `
+  --input .\data\output\contexts.jsonl `
   --output .\data\output\jev_shadow\jev_shadow_v1.jsonl
 ```
 
@@ -41,7 +41,7 @@ To project a NiftyZoning `candidate_trace.json` artifact into point-in-time cont
 ```powershell
 python -m jev_shadow.cli build-contexts `
   --input 'C:\path\to\run\candidate_trace.json' `
-  --output .\contexts.jsonl
+  --output .\data\output\contexts.jsonl
 ```
 
 The adapter excludes exit time, exit reason, settlement, and realized P&L fields even when they are present in the source artifact.
@@ -52,7 +52,7 @@ For the orderflow oracle timestamps, run NiftyZoning's research trace and build 
 python -m jev_shadow.cli build-orderflow-contexts `
   --niftyzoning-root 'C:\Users\agraw\Python\NiftyZoning' `
   --date 20260929 `
-  --output .\orderflow_contexts_20260929.jsonl
+  --output .\data\output\orderflow_contexts_20260929.jsonl
 ```
 
 This uses oracle timestamps only to select which observed bars to inspect. Oracle direction, entry/exit prices, future bars, and outcomes are not sent to Jev.
@@ -63,10 +63,10 @@ An existing full-day trace can be projected without rerunning NiftyZoning:
 python -m jev_shadow.cli build-orderflow-contexts `
   --trace 'C:\path\to\orderflow-full-day-trace.json' `
   --date 20260929 `
-  --output .\orderflow_contexts_20260929.jsonl
+  --output .\data\output\orderflow_contexts_20260929.jsonl
 ```
 
-Generated result and full-day context JSONL files should be kept under ignored output directories or otherwise excluded from commits. `orderflow_context_sample.jsonl` is a small tracked fixture for inspecting the expected context shape.
+Generated result and full-day context JSONL files should be kept under ignored output directories or otherwise excluded from commits. `data/orderflow_context_sample.jsonl` is a small tracked fixture for inspecting the expected context shape.
 
 ## Boundaries
 
