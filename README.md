@@ -76,7 +76,7 @@ python -m jev_shadow.cli analyze-results `
   --oracle-audit .\data\output\orderflow_oracle_audit_20260929.jsonl
 ```
 
-Generated result, audit, and full-day context JSONL files should be kept under ignored output directories or otherwise excluded from commits. `data/orderflow_context_sample.jsonl` is a small tracked fixture for inspecting the expected context shape.
+Generated result, audit, and full-day context JSONL files should be kept under ignored output directories or otherwise excluded from commits. `data/orderflow_context_smoke_test.jsonl` is a tracked 11-trade smoke-test fixture containing entry-time fields only.
 
 ## Boundaries
 
