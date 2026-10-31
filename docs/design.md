@@ -58,6 +58,66 @@ The adapter also creates a separate audit stream. Audit records may contain
 oracle direction and outcome metadata for comparison after the shadow run, but
 they are never passed to Jev.
 
+### Multi-timeframe context extension
+
+The current orderflow adapter emits a single timeframe per context. A richer
+context may include several causal views of the same decision, for example:
+
+- `1m`: entry and orderflow execution view
+- `5m`: setup and local structure view
+- `15m` or `1h`: broader regime and location view
+
+The extension should use one decision timestamp and an explicit timeframe map,
+while preserving the existing fields for the primary timeframe:
+
+```json
+{
+  "context_schema": "jev-shadow.context.v2",
+  "decision_time": "2026-09-29T09:22:00+05:30",
+  "primary_timeframe": "1m",
+  "timeframes": {
+    "1m": {
+      "as_of": "2026-09-29T09:22:00+05:30",
+      "bar_status": "closed",
+      "market": {},
+      "features": {},
+      "causal_locations": {},
+      "source": {}
+    },
+    "5m": {
+      "as_of": "2026-09-29T09:20:00+05:30",
+      "bar_status": "closed",
+      "market": {},
+      "features": {},
+      "causal_locations": {},
+      "source": {}
+    }
+  }
+}
+```
+
+Required rules for construction:
+
+1. Every timeframe is independently cut off at the same `decision_time`.
+2. Only bars closed by that time may be included. A still-forming higher-timeframe bar is either omitted or represented by a clearly marked partial-bar field; it must not be presented as finalized.
+3. `as_of`, bar close time, timezone, source trace, feature window, and lookback scope are recorded for every timeframe.
+4. Features are computed within their own timeframe and are not silently mixed across windows. Cross-timeframe features such as `trend_alignment` or `location_agreement` must identify the source timeframes and formula version.
+5. Missing, stale, or misaligned timeframes are represented explicitly in `source.status`; they are not filled with future data or inferred values.
+6. The primary `1m` view remains the decision anchor. Higher-timeframe data provides context only and cannot override deterministic NiftyZoning eligibility, risk, sizing, reservation, execution, or exit controls.
+
+The adapter should build this envelope from the existing causal traces rather
+than asking Jev to infer timeframe boundaries. A separate immutable context
+hash must cover the complete multi-timeframe payload. The audit stream should
+record the selected bar for each timeframe so reviewers can verify alignment
+without exposing post-decision outcomes.
+
+Implementation should remain backward-compatible at the runner boundary: the
+runner sends the context unchanged, while validation should require the v2
+envelope only for multi-timeframe inputs. Focused tests must cover closed-bar
+selection at timeframe boundaries, timezone conversion, missing higher-timeframe
+bars, partial-bar exclusion, cross-timeframe provenance, and hash changes when
+any timeframe changes.
+
 ## Provider evaluation
 
 `runner.run_jsonl` processes one JSON object per input line. Each context must

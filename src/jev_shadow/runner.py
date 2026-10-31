@@ -14,6 +14,28 @@ from .config import ShadowConfig
 from .models import ShadowRecord, context_hash, converge
 
 
+def _validate_context(context: Mapping[str, Any], line_number: int) -> None:
+    """Validate only the versioned envelope; legacy contexts remain accepted."""
+    timeframes = context.get("timeframes")
+    if timeframes is None:
+        return
+    if context.get("context_schema") != "jev-shadow.context.v2":
+        raise ValueError(f"context line {line_number} has an invalid multi-timeframe schema")
+    if not isinstance(context.get("decision_time"), str):
+        raise TypeError(f"context line {line_number} is missing decision_time")
+    primary = context.get("primary_timeframe")
+    if not isinstance(primary, str) or not isinstance(timeframes, Mapping) or primary not in timeframes:
+        raise ValueError(f"context line {line_number} has an invalid primary timeframe")
+    for timeframe, view in timeframes.items():
+        if not isinstance(view, Mapping):
+            raise TypeError(f"context line {line_number} timeframe {timeframe!r} is not an object")
+        source = view.get("source")
+        if not isinstance(source, Mapping) or source.get("status") not in {
+            "ok", "missing", "stale", "partial", "misaligned",
+        }:
+            raise ValueError(f"context line {line_number} timeframe {timeframe!r} has invalid source status")
+
+
 def run_jsonl(input_path: Path, output_path: Path, config: ShadowConfig) -> int:
     """Evaluate contexts without changing the source run or its database."""
     if not config.jev_api_key:
@@ -30,6 +52,7 @@ def run_jsonl(input_path: Path, output_path: Path, config: ShadowConfig) -> int:
             if not isinstance(value, Mapping):
                 raise TypeError(f"context line {line_number} must be a JSON object")
             context = dict(value)
+            _validate_context(context, line_number)
             candidate_id = str(context.get("candidate_id") or "")
             if not candidate_id:
                 raise ValueError(f"context line {line_number} is missing candidate_id")

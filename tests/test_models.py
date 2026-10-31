@@ -102,6 +102,64 @@ def test_orderflow_adapter_uses_causal_trace_at_oracle_times_only() -> None:
     assert audit[0]["oracle_exit_time"] == "15:00"
 
 
+def test_multitimeframe_context_excludes_future_and_marks_missing_views() -> None:
+    payload = {
+        "date": "2026-09-29", "timezone": "Asia/Kolkata",
+        "contract_identity": ["NIFTY"],
+        "timeframes": {
+            "1m": {
+                "trace": [{"time": "09:22", "bar": {"Time": "09:22", "Close": 100}}],
+                "oracle_trades": [{"signal_time": "09:22", "cross_timeframe_features": {"trend_alignment": 1}}],
+            },
+            "5m": {
+                "trace": [
+                    {"time": "09:20", "bar": {"Time": "09:20", "Close": 99}},
+                    {"time": "09:25", "bar": {"Time": "09:25", "Close": 101}},
+                ],
+            },
+            "15m": {"trace": []},
+        },
+    }
+
+    context = orderflow_contexts(payload)[0]
+
+    assert context["context_schema"] == "jev-shadow.context.v2"
+    assert context["decision_time"].endswith("+05:30")
+    assert context["timeframes"]["5m"]["market"]["bar"]["Close"] == 99
+    assert context["timeframes"]["15m"]["source"]["status"] == "missing"
+    assert context["cross_timeframe_features"]["provenance"]["source_timeframes"] == ["1m", "5m", "15m"]
+
+
+def test_multitimeframe_partial_bar_is_not_presented_as_closed() -> None:
+    payload = {
+        "date": "2026-09-29", "timezone": "UTC", "contract_identity": ["NIFTY"],
+        "timeframes": {
+            "1m": {"trace": [{"time": "09:22", "bar": {"Time": "09:22"}}],
+                    "oracle_trades": [{"signal_time": "09:22"}]},
+            "5m": {"trace": [{"time": "09:25", "partial_bar": True}]},
+        },
+    }
+
+    context = orderflow_contexts(payload)[0]
+
+    assert context["timeframes"]["5m"]["bar_status"] == "missing"
+    assert context["timeframes"]["5m"]["source"]["status"] == "missing"
+
+
+def test_multitimeframe_hash_changes_when_secondary_view_changes() -> None:
+    payload = {
+        "date": "2026-09-29", "contract_identity": ["NIFTY"],
+        "timeframes": {
+            "1m": {"trace": [{"time": "09:22"}], "oracle_trades": [{"signal_time": "09:22"}]},
+            "5m": {"trace": [{"time": "09:20", "bar": {"Close": 99}}]},
+        },
+    }
+    first = orderflow_contexts(payload)[0]
+    payload["timeframes"]["5m"]["trace"][0]["bar"]["Close"] = 100
+    second = orderflow_contexts(payload)[0]
+    assert context_hash(first) != context_hash(second)
+
+
 def test_load_dotenv_preserves_environment_and_parses_values(tmp_path, monkeypatch) -> None:
     dotenv = tmp_path / ".env"
     dotenv.write_text(
