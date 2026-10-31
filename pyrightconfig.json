@@ -1,0 +1,23 @@
+{
+  "include": ["src", "tests"],
+  "typeCheckingMode": "basic",
+  "pythonVersion": "3.11",
+  "venvPath": ".",
+  "venv": ".venv",
+  "useLibraryCodeForTypes": false,
+  "reportMissingImports": false,
+  "reportUnknownVariableType": false,
+  "reportUnknownMemberType": false,
+  "reportGeneralTypeIssues": false,
+  "reportUndefinedVariable": false,
+  "exclude": [
+    "**/.venv/**",
+    "**/__pycache__/**",
+    "**/.pytest_cache/**",
+    "**/.ruff_cache/**",
+    "**/build/**",
+    "**/dist/**",
+    "**/*.egg-info/**",
+    "**/data/**"
+  ]
+}
