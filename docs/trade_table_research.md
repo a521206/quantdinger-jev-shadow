@@ -81,6 +81,21 @@ Across all 11 trades:
 
 The rejection rationales commonly cited mixed orderflow, low or non-confirming volume, conflicting cumulative delta versus current-bar price action, nearby support or resistance, and late-session timing.
 
+## Latest Multi-Timeframe Rerun
+
+The latest rerun used the generated `data/output/orderflow_contexts_20260929.jsonl` input. It contains 10 point-in-time contexts. Each context embeds `1m`, `3m`, and `5m` causal views, with `1m` as the primary timeframe. Jev received the complete multi-timeframe context for each request; the analyzer's timeframe count reports only the primary `1m` value.
+
+The output was rewritten before the run at `data/output/jev_shadow/orderflow_results_20260929.jsonl`, so it contains exactly the 10 records from this run:
+
+- 10 records processed
+- 9 successful responses and 1 failed response
+- 3 `would_pass`, 6 `would_reject`, and 1 `unavailable`
+- Mean latency: 12.93 seconds, ranging from 5.37 to 23.71 seconds
+- Failed candidate: `orderflow-2026-09-29-1m-11:26-7`
+- Failure: the provider response was missing the required `signal_alignment` assessment
+
+The failed response is persisted as an unavailable shadow outcome and does not authorize or alter any deterministic trading decision.
+
 ## Interpretation
 
 Jev was conservative: it accepted two profitable trades but rejected seven trades that subsequently made money. Therefore, `would_reject` is not a prediction of loss; it means the point-in-time evidence did not justify taking the trade.

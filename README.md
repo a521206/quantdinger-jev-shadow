@@ -24,7 +24,7 @@ Optional overrides are `NIFTYZONING_SLIM_DB`, `NIFTYZONING_OPTIONS_DB`, `JEV_BAS
 
 `db-info` and `run-jsonl` validate the shared database configuration before running. The context-building commands do not require `NIFTYZONING_ROOT` when given local input artifacts, so they can be used independently of the NiftyZoning checkout.
 
-To run the isolated client, prepare one point-in-time context JSON object per line. Each object must contain `candidate_id`; the runner sends the object as Jev state and writes append-only responses:
+To run the isolated client, prepare one point-in-time context JSON object per line. Each object must contain `candidate_id`; the runner sends the object as Jev state and rewrites the requested result file for each run:
 
 ```powershell
 $env:OPENROUTER_API_KEY = '<local secret>'

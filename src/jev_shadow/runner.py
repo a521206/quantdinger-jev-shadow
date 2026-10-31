@@ -8,7 +8,7 @@ from collections.abc import Mapping
 from pathlib import Path
 from typing import Any
 
-from .artifacts import append_record
+from .artifacts import append_record, reset_output
 from .client import JevClient
 from .config import ShadowConfig
 from .models import ShadowRecord, context_hash, converge
@@ -40,6 +40,7 @@ def run_jsonl(input_path: Path, output_path: Path, config: ShadowConfig) -> int:
     """Evaluate contexts without changing the source run or its database."""
     if not config.jev_api_key:
         raise RuntimeError("OPENROUTER_API_KEY is required for an OpenRouter shadow run")
+    reset_output(output_path)
     client = JevClient(
         config.jev_base_url, config.jev_model, config.timeout_seconds, config.jev_api_key,
     )

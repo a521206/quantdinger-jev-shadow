@@ -166,9 +166,10 @@ Each `ShadowRecord` contains:
 - latency and error details
 - optional metadata for the experiment
 
-Records are appended as JSONL so a run can be inspected incrementally and
-previous observations are not overwritten. Canonical JSON uses sorted keys and
-stable separators before hashing. The hash identifies the exact payload for
+Records are written as JSONL so a run can be inspected incrementally; the
+requested result file is cleared at the start of each run to prevent stale
+observations from accumulating. Canonical JSON uses sorted keys and stable
+separators before hashing. The hash identifies the exact payload for
 reproducibility; it is not a similarity key and must not be used to retrieve
 historical contexts.
 

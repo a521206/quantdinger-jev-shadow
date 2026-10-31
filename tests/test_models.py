@@ -3,8 +3,9 @@ import os
 from jev_shadow.adapter import context_from_candidate, orderflow_audit_records, orderflow_contexts
 from jev_shadow.analysis import analyze_records, render_markdown, render_terminal
 from jev_shadow.cli import main
-from jev_shadow.config import load_dotenv
+from jev_shadow.config import ShadowConfig, load_dotenv
 from jev_shadow.models import context_hash, converge
+from jev_shadow.runner import run_jsonl
 
 
 def test_context_hash_is_order_independent() -> None:
@@ -248,3 +249,32 @@ def test_terminal_analysis_uses_tables() -> None:
     assert "Contexts processed" in report
     assert "trade_assessment" in report
     assert "worth_taking" in report
+
+
+def test_run_jsonl_rewrites_existing_output(tmp_path, monkeypatch) -> None:
+    input_path = tmp_path / "contexts.jsonl"
+    output_path = tmp_path / "results.jsonl"
+    input_path.write_text('{"candidate_id":"c1"}\n', encoding="utf-8")
+    output_path.write_text("stale\n", encoding="utf-8")
+
+    class FakeClient:
+        def __init__(self, *args):
+            pass
+
+        def evaluate(self, context):
+            return {
+                "trade_assessment": {"choice": "not_worth_taking", "confidence": 0.9},
+                "signal_alignment": {"choice": "aligned", "confidence": 0.9},
+                "market_regime": {"choice": "neutral", "confidence": 0.9},
+            }
+
+        def close(self):
+            pass
+
+    monkeypatch.setattr("jev_shadow.runner.JevClient", FakeClient)
+    config = ShadowConfig(tmp_path, tmp_path / "slim.db", tmp_path / "options.db", tmp_path, jev_api_key="key")
+
+    assert run_jsonl(input_path, output_path, config) == 1
+    lines = output_path.read_text(encoding="utf-8").splitlines()
+    assert len(lines) == 1
+    assert "stale" not in lines[0]
