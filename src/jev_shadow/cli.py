@@ -8,6 +8,7 @@ import os
 from pathlib import Path
 
 from .adapter import run_orderflow_trace, write_contexts, write_orderflow_contexts
+from .analysis import analyze_records, load_records, render_terminal
 from .config import ShadowConfig
 from .database import table_names
 from .runner import run_jsonl
@@ -33,6 +34,10 @@ def main(argv: list[str] | None = None) -> int:
     orderflow_parser.add_argument("--output", type=Path, required=True)
     orderflow_parser.add_argument("--trace", type=Path, help="use an existing full-day trace JSON")
     orderflow_parser.add_argument("--niftyzoning-root", type=Path)
+    analysis_parser = subparsers.add_parser(
+        "analyze-results", help="print a tabulated summary of Jev shadow JSONL results"
+    )
+    analysis_parser.add_argument("--input", type=Path, required=True)
     args = parser.parse_args(argv)
 
     if args.command == "build-contexts":
@@ -52,6 +57,12 @@ def main(argv: list[str] | None = None) -> int:
                 raise RuntimeError("--niftyzoning-root or NIFTYZONING_ROOT is required")
             count = run_orderflow_trace(root, args.date.replace("-", ""), args.output)
         print(f"Wrote {count} point-in-time orderflow contexts -> {args.output}")
+        return 0
+    if args.command == "analyze-results":
+        if not args.input.is_file():
+            raise FileNotFoundError(f"Jev results not found: {args.input}")
+        summary = analyze_records(load_records(args.input))
+        print(render_terminal(summary, args.input.name), end="")
         return 0
     config = ShadowConfig.from_environment()
     config.validate()
