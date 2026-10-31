@@ -11,51 +11,40 @@ import httpx
 QUESTIONS: dict[str, dict[str, Any]] = {
     "data_quality": {
         "type": "choice",
-        "instructions": "Assess whether the supplied point-in-time evidence is sufficient for a pre-trade decision.",
+        "instructions": "Assess whether the supplied point-in-time market and orderflow evidence is sufficient to judge this opportunity.",
         "criteria": {
-            "sufficient": "Market, signal, portfolio, and execution evidence are current and usable.",
-            "partial": "Some evidence is missing or stale, but concrete risk checks remain possible.",
-            "insufficient": "The state lacks enough current evidence for a directional or risk judgement.",
+            "sufficient": "Current market and orderflow evidence is usable for a directional judgement.",
+            "partial": "Some market evidence is missing or limited, but a tentative directional judgement is possible.",
+            "insufficient": "The state lacks enough current market evidence to judge the opportunity.",
         },
     },
     "signal_alignment": {
         "type": "choice",
-        "instructions": "Compare the requested action and signal reason with the supplied market evidence.",
+        "instructions": "Assess whether the supplied orderflow evidence forms a coherent directional opportunity.",
         "criteria": {
-            "aligned": "The evidence supports the requested direction.",
-            "mixed": "Evidence is usable but indicators disagree without a strong contradiction.",
-            "conflict": "Current evidence materially contradicts the requested direction.",
-            "insufficient": "There is not enough current market evidence to judge alignment.",
+            "aligned": "Orderflow evidence coherently supports a directional opportunity.",
+            "mixed": "Evidence is usable but orderflow indicators disagree without a strong contradiction.",
+            "conflict": "Orderflow evidence materially contradicts a directional opportunity.",
+            "insufficient": "There is not enough current orderflow evidence to judge alignment.",
         },
     },
     "market_regime": {
         "type": "choice",
-        "instructions": "Judge whether the current regime is suitable for the requested entry.",
+        "instructions": "Judge whether the current market regime is suitable for this orderflow opportunity.",
         "criteria": {
-            "favorable": "The regime supports the entry.",
-            "neutral": "The regime is mixed but does not materially oppose the entry.",
-            "adverse": "The regime materially opposes the entry.",
+            "favorable": "The regime supports the opportunity.",
+            "neutral": "The regime is mixed but does not materially oppose the opportunity.",
+            "adverse": "The regime materially opposes the opportunity.",
             "insufficient": "The supplied evidence is unavailable or too stale to judge the regime.",
         },
     },
-    "risk_check": {
+    "trade_assessment": {
         "type": "choice",
-        "instructions": "Assess sizing, exposure, drawdown, recent performance, protection, and deterministic budget.",
+        "instructions": "Based only on the supplied point-in-time market and orderflow evidence, assess whether this opportunity is worth taking.",
         "criteria": {
-            "clear": "No material account or portfolio risk is visible.",
-            "caution": "Risk is elevated but remains within supplied limits.",
-            "block": "A concrete risk requires blocking.",
-            "insufficient": "Account evidence is incomplete.",
-        },
-    },
-    "execution_quality": {
-        "type": "choice",
-        "instructions": "Assess price freshness, protection, order type, timing, and execution constraints.",
-        "criteria": {
-            "clear": "The order has no material execution concern.",
-            "caution": "Execution is possible but has material caveats.",
-            "block": "A concrete execution issue requires blocking.",
-            "insufficient": "Execution evidence is incomplete.",
+            "worth_taking": "The market and orderflow evidence gives a sufficiently favorable directional case.",
+            "not_worth_taking": "The market and orderflow evidence gives an unfavorable or contradicted directional case.",
+            "insufficient": "The supplied market and orderflow evidence is too weak or contradictory to judge.",
         },
     },
 }

@@ -22,6 +22,8 @@ jev-shadow db-info
 
 Optional overrides are `NIFTYZONING_SLIM_DB`, `NIFTYZONING_OPTIONS_DB`, `JEV_BASE_URL`, `JEV_MODEL`, and `JEV_TIMEOUT_SECONDS`. The default provider is OpenRouter at `https://openrouter.ai/api/v1`, using TypeSafe's `typesafe/jev-router` model.
 
+`db-info` and `run-jsonl` validate the shared database configuration before running. The context-building commands do not require `NIFTYZONING_ROOT` when given local input artifacts, so they can be used independently of the NiftyZoning checkout.
+
 To run the isolated client, prepare one point-in-time context JSON object per line. Each object must contain `candidate_id`; the runner sends the object as Jev state and writes append-only responses:
 
 ```powershell
@@ -54,6 +56,17 @@ python -m jev_shadow.cli build-orderflow-contexts `
 ```
 
 This uses oracle timestamps only to select which observed bars to inspect. Oracle direction, entry/exit prices, future bars, and outcomes are not sent to Jev.
+
+An existing full-day trace can be projected without rerunning NiftyZoning:
+
+```powershell
+python -m jev_shadow.cli build-orderflow-contexts `
+  --trace 'C:\path\to\orderflow-full-day-trace.json' `
+  --date 20260929 `
+  --output .\orderflow_contexts_20260929.jsonl
+```
+
+Generated result and full-day context JSONL files should be kept under ignored output directories or otherwise excluded from commits. `orderflow_context_sample.jsonl` is a small tracked fixture for inspecting the expected context shape.
 
 ## Boundaries
 

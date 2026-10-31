@@ -55,23 +55,23 @@ def converge(response: Mapping[str, Any] | None, *, min_confidence: float = 0.55
     """Convert a Jev response into an analytical label, never an execution command."""
     if response is None:
         return "unavailable"
-    risk = response.get("risk_check")
-    execution = response.get("execution_quality")
     signal = response.get("signal_alignment")
     regime = response.get("market_regime")
+    assessment = response.get("trade_assessment")
     if (
-        not isinstance(risk, Mapping)
-        or not isinstance(execution, Mapping)
-        or not isinstance(signal, Mapping)
+        not isinstance(signal, Mapping)
         or not isinstance(regime, Mapping)
+        or not isinstance(assessment, Mapping)
     ):
         return "invalid_response"
-    if risk.get("choice") == "block" or execution.get("choice") == "block":
+    if assessment.get("choice") == "not_worth_taking":
         return "would_reject"
-    confidences = [risk.get("confidence"), execution.get("confidence")]
+    confidences = [signal.get("confidence"), regime.get("confidence"), assessment.get("confidence")]
     if any(not isinstance(value, (int, float)) or float(value) < min_confidence for value in confidences):
         return "would_review"
+    if assessment.get("choice") == "insufficient":
+        return "would_review"
     directional_block = signal.get("choice") == "conflict" and regime.get("choice") == "adverse"
-    if directional_block or execution.get("choice") == "caution" or risk.get("choice") == "caution":
+    if directional_block:
         return "would_review"
     return "would_pass"
