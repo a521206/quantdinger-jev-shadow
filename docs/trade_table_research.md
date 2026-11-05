@@ -81,9 +81,47 @@ Across all 11 trades:
 
 The rejection rationales commonly cited mixed orderflow, low or non-confirming volume, conflicting cumulative delta versus current-bar price action, nearby support or resistance, and late-session timing.
 
-## Latest Multi-Timeframe Rerun
+## Rerun On 2026-11-05
 
-The latest rerun used the generated `data/output/orderflow_contexts_20260929.jsonl` input. It contains 10 point-in-time contexts. Each context embeds `1m`, `3m`, and `5m` causal views, with `1m` as the primary timeframe. Jev received the complete multi-timeframe context for each request; the analyzer's timeframe count reports only the primary `1m` value.
+The documented trade-table command was rerun against the same 11 entry-time contexts. The output was written to the ignored artifact `data/output/jev_shadow/trade_table_results_rerun.jsonl` and analyzed immediately afterward.
+
+- 11 contexts were submitted.
+- 10 responses were valid and 1 request timed out (`short-candidate-11`).
+- The valid responses produced 3 `would_pass` and 7 `would_reject` classifications.
+- Mean latency was 11.07 seconds, ranging from 7.52 to 16.88 seconds.
+- The accepted rows were candidates 2, 1 on 2026-09-28, and 7 on 2026-09-29. All three were profitable in the supplied post-hoc ledger, for `+202.3` reward.
+- Of the seven valid rejected rows, six were profitable and one was loss-making, for `+352.8` reward. The timed-out row was also loss-making (`-7.9`), but has no Jev classification.
+
+Among the 10 classified rows this rerun therefore has 3 true positives, 6 false negatives, 1 true negative, and 0 false positives. The apparent improvement over the earlier run is not evidence of model improvement: the same provider request returned a different assessment distribution, and one request failed operationally.
+
+## What The Experiment Is Actually Testing
+
+The oracle trade list is not a representative set of opportunities. It is a post-hoc, strategy-selected set of entries that were allowed to complete under deterministic entry, position-management, and exit rules. Nine of the 11 rows were profitable, but two were loss-making. This means the experiment cannot ask Jev to identify “all profitable trades” without giving it the candidate universe, the counterfactual rejected candidates, and a predeclared outcome horizon.
+
+The labels also measure different things:
+
+- Jev answers whether the point-in-time evidence is sufficiently favorable to take the opportunity.
+- The ledger labels the result after future price path, stop/target behavior, reversals, trailing exits, session close, and execution rules have occurred.
+
+A trade can therefore be a reasonable entry despite weak immediate confirmation and still make money through later mean reversion or trend continuation. Conversely, a favorable-looking entry can lose. Jev is not shown the future path, the exit policy, the stop distance, the target, or the opportunity's counterfactual alternatives, so realized reward is not an observable target at decision time.
+
+The individual rationales illustrate this causal mismatch. Jev rejected the profitable 2026-09-29 short at 09:22 because the entry bar showed positive CLV and positive bar-delta proxy, rejected the profitable 12:17 short because volume was only 0.24x its 20-bar average, and rejected the profitable 13:02 long because the entry bar was bearish and lacked stabilization. Those are defensible entry-time objections; later profitability does not make them errors unless the research question is explicitly “would the eventual trade have made money?”
+
+The main challenge is consequently label and selection bias, not simply Jev's inability to read orderflow:
+
+- Survivorship and oracle selection remove the ordinary losing and rejected opportunities from the input set.
+- Conditioning on completed trades makes recall against realized profitability look like the primary objective, although a real filter also needs abstention quality, costs, risk, and opportunity coverage.
+- The causal features are noisy proxies (`delta_proxy`, CLV, relative volume) and often conflict at the exact entry bar; the oracle may rely on location and subsequent management behavior that are not encoded as a predictive label.
+- The sample has only 11 rows across three sessions, so one provider response changes the percentages materially.
+- `temperature=0` does not make this an independently reproducible benchmark when the configured provider can vary responses or availability; the rerun changed 2 accepts to 3 and introduced a timeout.
+
+The appropriate next experiment is a chronological candidate-level dataset containing every eligible entry, including deterministic rejects and non-trades, with labels defined prospectively (for example, fixed-horizon return, maximum adverse excursion, maximum favorable excursion, and costs). Jev should then be evaluated for calibration, selective risk/coverage, and incremental value over the deterministic baseline, while keeping all execution and risk controls outside Jev.
+
+## Latest Multi-Timeframe Experiment
+
+The follow-up experiment used the generated `data/output/orderflow_contexts_20260929.jsonl` input. It contains 10 point-in-time contexts. Each context embeds `1m`, `3m`, and `5m` causal views, with `1m` as the primary timeframe. Jev received the complete multi-timeframe context for each request; the analyzer's timeframe count reports only the primary `1m` value.
+
+For each context, the adapter selected the latest trace available at the decision time for every timeframe. No later bars, exits, realized P&L, or oracle outcomes were included in the Jev request. The runner rewrote the result file before processing, preventing records from earlier runs from being counted in this experiment.
 
 The output was rewritten before the run at `data/output/jev_shadow/orderflow_results_20260929.jsonl`, so it contains exactly the 10 records from this run:
 
@@ -96,11 +134,21 @@ The output was rewritten before the run at `data/output/jev_shadow/orderflow_res
 
 The failed response is persisted as an unavailable shadow outcome and does not authorize or alter any deterministic trading decision.
 
+### Multi-Timeframe Limitations
+
+- This rerun has only 10 contexts from one trading day and is not an independent validation sample.
+- The 10 contexts were selected from an oracle-driven research trace; selection bias and post-hoc opportunity definition remain possible.
+- One provider response was malformed, so only 9 contexts produced complete Jev assessments.
+- The rerun has no realized-outcome join and therefore does not support precision, recall, reward, or profitability claims.
+- It does not compare multi-timeframe Jev responses against a single-timeframe baseline, measure incremental value from `3m` or `5m`, or assess calibration.
+- Provider latency ranged up to 23.71 seconds, and operational impact was not evaluated.
+- The result reflects one configured provider/model run and may vary with provider response stochasticity or availability.
+
 ## Interpretation
 
-Jev was conservative: it accepted two profitable trades but rejected seven trades that subsequently made money. Therefore, `would_reject` is not a prediction of loss; it means the point-in-time evidence did not justify taking the trade.
+In the original recorded run, Jev accepted two profitable trades and rejected seven trades that subsequently made money. In the 2026-11-05 rerun, it accepted three profitable trades and rejected six profitable trades. Across both runs, `would_reject` is not a prediction of loss; it means the point-in-time evidence did not justify taking the trade.
 
-The results do not establish profitability, predictive accuracy, or a deployable trading rule. The sample is small and externally supplied, and no baseline comparison, calibration analysis, randomized sample, counterfactual execution analysis, or Jev-controlled execution, sizing, or exit behavior is included. Latency and provider-response repeatability are recorded but not evaluated for operational impact. Jev should therefore be treated as a conservative evidence filter, not a demonstrated outcome predictor.
+Neither run establishes profitability, predictive accuracy, or a deployable trading rule. The sample is small and externally supplied, and no baseline comparison, calibration analysis, randomized sample, counterfactual execution analysis, or Jev-controlled execution, sizing, or exit behavior is included. Latency, timeout handling, and provider-response repeatability are recorded but not evaluated for operational impact. Jev should therefore be treated as a conservative evidence filter, not a demonstrated outcome predictor.
 
 ## Reproducibility
 
@@ -117,4 +165,32 @@ Then inspect the provider responses with:
 ```powershell
 .venv\Scripts\python.exe -m jev_shadow.cli analyze-results `
   --input data\output\jev_shadow\trade_table_results_fresh.jsonl
+```
+
+To reproduce the dated rerun recorded above, use a separate ignored output file:
+
+```powershell
+.venv\Scripts\python.exe -m jev_shadow.cli run-jsonl `
+  --input data\orderflow_context_smoke_test.jsonl `
+  --output data\output\jev_shadow\trade_table_results_rerun.jsonl
+
+.venv\Scripts\python.exe -m jev_shadow.cli analyze-results `
+  --input data\output\jev_shadow\trade_table_results_rerun.jsonl
+```
+
+To reproduce the latest multi-timeframe experiment, first build the causal contexts and then run Jev:
+
+```powershell
+.venv\Scripts\python.exe -m jev_shadow.cli build-orderflow-contexts `
+  --niftyzoning-root 'C:\Users\agraw\Python\NiftyZoning' `
+  --date 20260929 `
+  --output data\output\orderflow_contexts_20260929.jsonl `
+  --audit-output data\output\orderflow_oracle_audit_20260929.jsonl
+
+.venv\Scripts\python.exe -m jev_shadow.cli run-jsonl `
+  --input data\output\orderflow_contexts_20260929.jsonl `
+  --output data\output\jev_shadow\orderflow_results_20260929.jsonl
+
+.venv\Scripts\python.exe -m jev_shadow.cli analyze-results `
+  --input data\output\jev_shadow\orderflow_results_20260929.jsonl
 ```
