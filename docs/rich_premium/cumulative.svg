@@ -1,0 +1,229 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 340" role="img" aria-label="Cumulative rupees per lot, Nifty 2023 to 2026, rule versus selling every expiry">
+<style>
+.bg{fill:#ffffff} .grid{stroke:#e6e5e0;stroke-width:1} .zero{stroke:#8a8984;stroke-width:1}
+.ax{fill:#52514e;font:12px -apple-system,system-ui,sans-serif} .lab{fill:#0b0b0b;font:600 12px -apple-system,system-ui,sans-serif}
+.s1{stroke:#2a78d6} .s2{stroke:#eb6834} .f1{fill:#2a78d6} .f2{fill:#eb6834} .hit{fill:transparent}
+</style>
+<rect class="bg" width="760" height="340"/>
+<line class="zero" x1="64" x2="624" y1="304.0" y2="304.0"/>
+<text class="ax" x="56" y="308.0" text-anchor="end">0k</text>
+<line class="grid" x1="64" x2="624" y1="233.0" y2="233.0"/>
+<text class="ax" x="56" y="237.0" text-anchor="end">₹40k</text>
+<line class="grid" x1="64" x2="624" y1="162.0" y2="162.0"/>
+<text class="ax" x="56" y="166.0" text-anchor="end">₹80k</text>
+<line class="grid" x1="64" x2="624" y1="91.0" y2="91.0"/>
+<text class="ax" x="56" y="95.0" text-anchor="end">₹120k</text>
+<line class="grid" x1="64" x2="624" y1="20.0" y2="20.0"/>
+<text class="ax" x="56" y="24.0" text-anchor="end">₹160k</text>
+<text class="ax" x="206.6" y="328" text-anchor="middle">2024</text>
+<text class="ax" x="351.1" y="328" text-anchor="middle">2025</text>
+<text class="ax" x="495.3" y="328" text-anchor="middle">2026</text>
+<polyline fill="none" class="s2" stroke-width="2" stroke-linejoin="round" points="64.0,299.2 66.8,292.5 69.5,287.6 71.9,298.1 75.1,284.4 77.8,278.0 80.6,273.3 83.4,267.3 86.1,270.7 88.9,277.7 91.6,269.8 94.4,264.0 96.8,265.7 99.9,262.5 102.7,257.4 105.5,252.2 108.2,256.0 111.0,261.5 113.8,253.5 116.5,252.4 119.3,247.3 122.1,244.9 124.8,248.2 127.6,246.3 130.3,246.4 132.7,255.0 135.9,255.4 138.6,248.6 141.4,251.7 144.2,254.5 146.9,259.5 149.7,261.2 152.5,260.8 155.2,259.0 158.0,260.8 160.8,266.2 163.5,261.7 166.3,266.6 169.0,274.7 171.8,275.0 174.6,266.5 177.3,259.7 180.1,270.4 182.9,272.2 185.6,269.6 188.4,268.0 191.2,260.5 193.9,255.5 196.7,250.1 199.5,262.1 202.2,259.8 205.0,260.3 207.8,264.6 210.5,257.9 213.3,251.8 216.0,246.8 218.8,229.1 221.6,236.4 224.3,228.3 227.1,229.7 229.9,217.3 232.6,208.8 235.4,206.9 238.2,208.3 240.9,217.0 243.7,212.2 246.1,210.6 249.2,210.6 252.0,215.4 254.7,210.0 257.5,219.0 260.3,221.9 263.0,232.1 265.8,233.8 268.6,229.2 271.3,226.2 274.1,222.7 276.9,224.7 279.6,218.3 282.4,213.2 285.2,216.0 287.9,209.4 290.7,205.0 293.4,205.4 295.8,198.1 299.0,195.9 301.7,195.3 304.5,191.8 307.3,207.4 310.0,198.8 312.8,202.6 315.6,220.7 318.3,213.0 321.1,216.0 323.9,211.4 326.6,211.3 329.4,217.0 332.2,209.8 334.9,207.2 337.7,215.4 340.4,216.8 343.2,215.7 346.0,220.3 348.7,214.5 351.5,241.3 354.3,245.5 357.0,246.2 359.8,237.7 362.6,229.2 365.3,223.2 368.1,203.2 370.9,186.8 373.6,171.6 376.4,177.3 379.1,166.8 381.9,184.3 384.7,175.7 387.4,169.7 389.8,144.8 393.0,175.0 395.7,170.8 398.1,158.6 401.3,159.6 404.0,190.3 406.8,186.8 409.6,168.7 412.3,167.9 415.1,183.7 417.9,163.3 420.6,185.6 423.4,174.0 426.1,176.8 428.9,175.0 431.7,180.6 434.4,176.3 437.2,163.9 440.0,152.1 442.7,142.7 445.5,151.4 447.5,147.1 450.2,146.8 453.0,158.1 455.8,148.2 458.5,137.5 461.3,126.6 464.1,125.9 466.4,123.8 469.6,106.0 472.3,107.9 475.1,109.8 477.9,104.6 480.6,93.8 483.4,99.9 486.2,98.2 488.9,108.5 491.7,98.4 494.5,87.3 497.2,84.5 500.0,76.8 502.8,104.6 505.5,94.0 508.3,145.1 511.1,139.0 513.8,124.4 516.6,136.8 519.0,151.5 522.1,132.7 524.9,118.6 527.6,120.8 530.0,126.2 533.2,104.7 535.5,96.5 538.7,92.8 541.5,83.8 544.2,66.2 547.0,91.5 549.8,70.5 552.5,67.4 555.3,56.5 558.0,50.7 560.8,47.4 563.6,64.9 566.3,56.7 569.1,49.3 571.9,48.3 574.6,39.2 577.4,26.9 580.2,20.9 582.9,18.9 585.7,21.0 588.5,23.2 591.2,12.7 594.0,17.5 596.8,26.4 599.5,19.5 602.3,11.7 605.0,19.6 607.8,45.6 610.2,54.9 613.3,33.7 616.1,55.1 618.5,27.4 621.6,17.3 624.0,43.0"/>
+<polyline fill="none" class="s1" stroke-width="2" stroke-linejoin="round" points="64.0,304.0 66.8,304.0 69.5,304.0 71.9,304.0 75.1,290.2 77.8,283.8 80.6,283.8 83.4,283.8 86.1,283.8 88.9,283.8 91.6,283.8 94.4,278.0 96.8,278.0 99.9,278.0 102.7,278.0 105.5,278.0 108.2,278.0 111.0,278.0 113.8,278.0 116.5,278.0 119.3,278.0 122.1,278.0 124.8,278.0 127.6,278.0 130.3,278.0 132.7,278.0 135.9,278.0 138.6,278.0 141.4,278.0 144.2,280.8 146.9,285.8 149.7,285.8 152.5,285.8 155.2,285.8 158.0,285.8 160.8,285.8 163.5,281.3 166.3,286.2 169.0,286.2 171.8,286.2 174.6,277.7 177.3,270.8 180.1,281.6 182.9,283.3 185.6,283.3 188.4,283.3 191.2,283.3 193.9,283.3 196.7,283.3 199.5,283.3 202.2,281.1 205.0,281.1 207.8,281.1 210.5,274.3 213.3,268.3 216.0,263.3 218.8,245.6 221.6,252.9 224.3,244.7 227.1,244.7 229.9,232.3 232.6,232.3 235.4,230.5 238.2,231.9 240.9,240.5 243.7,235.7 246.1,234.1 249.2,234.1 252.0,238.9 254.7,233.5 257.5,233.5 260.3,233.5 263.0,233.5 265.8,233.5 268.6,228.9 271.3,225.8 274.1,225.8 276.9,225.8 279.6,225.8 282.4,225.8 285.2,225.8 287.9,219.3 290.7,214.9 293.4,214.9 295.8,214.9 299.0,214.9 301.7,214.9 304.5,214.9 307.3,214.9 310.0,206.3 312.8,206.3 315.6,206.3 318.3,198.6 321.1,198.6 323.9,198.6 326.6,198.6 329.4,204.3 332.2,197.0 334.9,194.4 337.7,194.4 340.4,195.8 343.2,195.8 346.0,195.8 348.7,195.8 351.5,222.6 354.3,222.6 357.0,222.6 359.8,222.6 362.6,214.1 365.3,214.1 368.1,194.1 370.9,194.1 373.6,194.1 376.4,199.8 379.1,199.8 381.9,217.3 384.7,208.7 387.4,208.7 389.8,183.8 393.0,183.8 395.7,183.8 398.1,183.8 401.3,183.8 404.0,183.8 406.8,180.3 409.6,162.3 412.3,162.3 415.1,162.3 417.9,162.3 420.6,162.3 423.4,162.3 426.1,162.3 428.9,162.3 431.7,162.3 434.4,162.3 437.2,149.9 440.0,149.9 442.7,149.9 445.5,149.9 447.5,149.9 450.2,149.9 453.0,149.9 455.8,149.9 458.5,149.9 461.3,149.9 464.1,149.9 466.4,147.8 469.6,130.1 472.3,130.1 475.1,130.1 477.9,130.1 480.6,130.1 483.4,130.1 486.2,130.1 488.9,130.1 491.7,130.1 494.5,130.1 497.2,130.1 500.0,122.4 502.8,122.4 505.5,111.8 508.3,162.9 511.1,162.9 513.8,162.9 516.6,175.4 519.0,190.0 522.1,171.2 524.9,157.2 527.6,159.3 530.0,164.7 533.2,143.2 535.5,135.0 538.7,131.4 541.5,131.4 544.2,113.9 547.0,113.9 549.8,92.8 552.5,92.8 555.3,81.9 558.0,76.2 560.8,72.9 563.6,72.9 566.3,64.8 569.1,64.8 571.9,63.8 574.6,63.8 577.4,63.8 580.2,57.8 582.9,55.8 585.7,55.8 588.5,55.8 591.2,45.3 594.0,45.3 596.8,54.2 599.5,47.4 602.3,39.6 605.0,39.6 607.8,39.6 610.2,48.9 613.3,48.9 616.1,48.9 618.5,21.3 621.6,21.3 624.0,46.9"/>
+<text class="lab" x="632.0" y="56.9">Rule ₹145k</text>
+<text class="lab" x="632.0" y="40.9">Every expiry ₹147k</text>
+<circle class="hit" cx="64.0" cy="304.0" r="7"><title>Expiry 2023-01-05: skipped (ratio 0.67 vs 0.759). Rule total ₹0, every-expiry total ₹2,695</title></circle>
+<circle class="hit" cx="66.8" cy="304.0" r="7"><title>Expiry 2023-01-12: skipped (ratio 0.701 vs 0.759). Rule total ₹0, every-expiry total ₹6,502</title></circle>
+<circle class="hit" cx="69.5" cy="304.0" r="7"><title>Expiry 2023-01-19: skipped (ratio 0.614 vs 0.759). Rule total ₹0, every-expiry total ₹9,237</title></circle>
+<circle class="hit" cx="71.9" cy="304.0" r="7"><title>Expiry 2023-01-25: skipped (ratio 0.599 vs 0.759). Rule total ₹0, every-expiry total ₹3,302</title></circle>
+<circle class="hit" cx="75.1" cy="290.2" r="7"><title>Expiry 2023-02-02: sold, +155.1 pts, ₹+7,756 a lot. Rule total ₹7,756, every-expiry total ₹11,058</title></circle>
+<circle class="hit" cx="77.8" cy="283.8" r="7"><title>Expiry 2023-02-09: sold, +72.0 pts, ₹+3,602 a lot. Rule total ₹11,358, every-expiry total ₹14,660</title></circle>
+<circle class="hit" cx="80.6" cy="283.8" r="7"><title>Expiry 2023-02-16: skipped (ratio 0.634 vs 0.764). Rule total ₹11,358, every-expiry total ₹17,295</title></circle>
+<circle class="hit" cx="83.4" cy="283.8" r="7"><title>Expiry 2023-02-23: skipped (ratio 0.642 vs 0.764). Rule total ₹11,358, every-expiry total ₹20,685</title></circle>
+<circle class="hit" cx="86.1" cy="283.8" r="7"><title>Expiry 2023-03-02: skipped (ratio 0.653 vs 0.764). Rule total ₹11,358, every-expiry total ₹18,743</title></circle>
+<circle class="hit" cx="88.9" cy="283.8" r="7"><title>Expiry 2023-03-09: skipped (ratio 0.614 vs 0.759). Rule total ₹11,358, every-expiry total ₹14,798</title></circle>
+<circle class="hit" cx="91.6" cy="283.8" r="7"><title>Expiry 2023-03-16: skipped (ratio 0.741 vs 0.755). Rule total ₹11,358, every-expiry total ₹19,267</title></circle>
+<circle class="hit" cx="94.4" cy="278.0" r="7"><title>Expiry 2023-03-23: sold, +65.9 pts, ₹+3,294 a lot. Rule total ₹14,652, every-expiry total ₹22,561</title></circle>
+<circle class="hit" cx="96.8" cy="278.0" r="7"><title>Expiry 2023-03-29: skipped (ratio 0.716 vs 0.755). Rule total ₹14,652, every-expiry total ₹21,598</title></circle>
+<circle class="hit" cx="99.9" cy="278.0" r="7"><title>Expiry 2023-04-06: skipped (ratio 0.644 vs 0.755). Rule total ₹14,652, every-expiry total ₹23,358</title></circle>
+<circle class="hit" cx="102.7" cy="278.0" r="7"><title>Expiry 2023-04-13: skipped (ratio 0.655 vs 0.755). Rule total ₹14,652, every-expiry total ₹26,268</title></circle>
+<circle class="hit" cx="105.5" cy="278.0" r="7"><title>Expiry 2023-04-20: skipped (ratio 0.641 vs 0.755). Rule total ₹14,652, every-expiry total ₹29,165</title></circle>
+<circle class="hit" cx="108.2" cy="278.0" r="7"><title>Expiry 2023-04-27: skipped (ratio 0.589 vs 0.755). Rule total ₹14,652, every-expiry total ₹27,063</title></circle>
+<circle class="hit" cx="111.0" cy="278.0" r="7"><title>Expiry 2023-05-04: skipped (ratio 0.722 vs 0.755). Rule total ₹14,652, every-expiry total ₹23,937</title></circle>
+<circle class="hit" cx="113.8" cy="278.0" r="7"><title>Expiry 2023-05-11: skipped (ratio 0.642 vs 0.746). Rule total ₹14,652, every-expiry total ₹28,426</title></circle>
+<circle class="hit" cx="116.5" cy="278.0" r="7"><title>Expiry 2023-05-18: skipped (ratio 0.579 vs 0.741). Rule total ₹14,652, every-expiry total ₹29,063</title></circle>
+<circle class="hit" cx="119.3" cy="278.0" r="7"><title>Expiry 2023-05-25: skipped (ratio 0.547 vs 0.741). Rule total ₹14,652, every-expiry total ₹31,935</title></circle>
+<circle class="hit" cx="122.1" cy="278.0" r="7"><title>Expiry 2023-06-01: skipped (ratio 0.671 vs 0.741). Rule total ₹14,652, every-expiry total ₹33,307</title></circle>
+<circle class="hit" cx="124.8" cy="278.0" r="7"><title>Expiry 2023-06-08: skipped (ratio 0.61 vs 0.741). Rule total ₹14,652, every-expiry total ₹31,449</title></circle>
+<circle class="hit" cx="127.6" cy="278.0" r="7"><title>Expiry 2023-06-15: skipped (ratio 0.662 vs 0.741). Rule total ₹14,652, every-expiry total ₹32,519</title></circle>
+<circle class="hit" cx="130.3" cy="278.0" r="7"><title>Expiry 2023-06-22: skipped (ratio 0.611 vs 0.739). Rule total ₹14,652, every-expiry total ₹32,476</title></circle>
+<circle class="hit" cx="132.7" cy="278.0" r="7"><title>Expiry 2023-06-28: skipped (ratio 0.62 vs 0.73). Rule total ₹14,652, every-expiry total ₹27,626</title></circle>
+<circle class="hit" cx="135.9" cy="278.0" r="7"><title>Expiry 2023-07-06: skipped (ratio 0.667 vs 0.727). Rule total ₹14,652, every-expiry total ₹27,400</title></circle>
+<circle class="hit" cx="138.6" cy="278.0" r="7"><title>Expiry 2023-07-13: skipped (ratio 0.707 vs 0.727). Rule total ₹14,652, every-expiry total ₹31,232</title></circle>
+<circle class="hit" cx="141.4" cy="278.0" r="7"><title>Expiry 2023-07-20: skipped (ratio 0.675 vs 0.722). Rule total ₹14,652, every-expiry total ₹29,464</title></circle>
+<circle class="hit" cx="144.2" cy="280.8" r="7"><title>Expiry 2023-07-27: sold, -31.3 pts, ₹-1,564 a lot. Rule total ₹13,088, every-expiry total ₹27,900</title></circle>
+<circle class="hit" cx="146.9" cy="285.8" r="7"><title>Expiry 2023-08-03: sold, -56.9 pts, ₹-2,846 a lot. Rule total ₹10,242, every-expiry total ₹25,054</title></circle>
+<circle class="hit" cx="149.7" cy="285.8" r="7"><title>Expiry 2023-08-10: skipped (ratio 0.67 vs 0.727). Rule total ₹10,242, every-expiry total ₹24,119</title></circle>
+<circle class="hit" cx="152.5" cy="285.8" r="7"><title>Expiry 2023-08-17: skipped (ratio 0.625 vs 0.723). Rule total ₹10,242, every-expiry total ₹24,324</title></circle>
+<circle class="hit" cx="155.2" cy="285.8" r="7"><title>Expiry 2023-08-24: skipped (ratio 0.614 vs 0.723). Rule total ₹10,242, every-expiry total ₹25,364</title></circle>
+<circle class="hit" cx="158.0" cy="285.8" r="7"><title>Expiry 2023-08-31: skipped (ratio 0.553 vs 0.723). Rule total ₹10,242, every-expiry total ₹24,327</title></circle>
+<circle class="hit" cx="160.8" cy="285.8" r="7"><title>Expiry 2023-09-07: skipped (ratio 0.533 vs 0.717). Rule total ₹10,242, every-expiry total ₹21,290</title></circle>
+<circle class="hit" cx="163.5" cy="281.3" r="7"><title>Expiry 2023-09-14: sold, +50.7 pts, ₹+2,537 a lot. Rule total ₹12,779, every-expiry total ₹23,827</title></circle>
+<circle class="hit" cx="166.3" cy="286.2" r="7"><title>Expiry 2023-09-21: sold, -55.1 pts, ₹-2,753 a lot. Rule total ₹10,026, every-expiry total ₹21,074</title></circle>
+<circle class="hit" cx="169.0" cy="286.2" r="7"><title>Expiry 2023-09-28: skipped (ratio 0.621 vs 0.709). Rule total ₹10,026, every-expiry total ₹16,514</title></circle>
+<circle class="hit" cx="171.8" cy="286.2" r="7"><title>Expiry 2023-10-05: skipped (ratio 0.671 vs 0.709). Rule total ₹10,026, every-expiry total ₹16,314</title></circle>
+<circle class="hit" cx="174.6" cy="277.7" r="7"><title>Expiry 2023-10-12: sold, +96.0 pts, ₹+4,802 a lot. Rule total ₹14,828, every-expiry total ₹21,116</title></circle>
+<circle class="hit" cx="177.3" cy="270.8" r="7"><title>Expiry 2023-10-19: sold, +77.1 pts, ₹+3,857 a lot. Rule total ₹18,685, every-expiry total ₹24,973</title></circle>
+<circle class="hit" cx="180.1" cy="281.6" r="7"><title>Expiry 2023-10-26: sold, -120.9 pts, ₹-6,044 a lot. Rule total ₹12,641, every-expiry total ₹18,929</title></circle>
+<circle class="hit" cx="182.9" cy="283.3" r="7"><title>Expiry 2023-11-02: sold, -20.1 pts, ₹-1,006 a lot. Rule total ₹11,635, every-expiry total ₹17,923</title></circle>
+<circle class="hit" cx="185.6" cy="283.3" r="7"><title>Expiry 2023-11-09: skipped (ratio 0.654 vs 0.709). Rule total ₹11,635, every-expiry total ₹19,403</title></circle>
+<circle class="hit" cx="188.4" cy="283.3" r="7"><title>Expiry 2023-11-16: skipped (ratio 0.631 vs 0.709). Rule total ₹11,635, every-expiry total ₹20,295</title></circle>
+<circle class="hit" cx="191.2" cy="283.3" r="7"><title>Expiry 2023-11-23: skipped (ratio 0.61 vs 0.709). Rule total ₹11,635, every-expiry total ₹24,512</title></circle>
+<circle class="hit" cx="193.9" cy="283.3" r="7"><title>Expiry 2023-11-30: skipped (ratio 0.577 vs 0.709). Rule total ₹11,635, every-expiry total ₹27,297</title></circle>
+<circle class="hit" cx="196.7" cy="283.3" r="7"><title>Expiry 2023-12-07: skipped (ratio 0.628 vs 0.709). Rule total ₹11,635, every-expiry total ₹30,343</title></circle>
+<circle class="hit" cx="199.5" cy="283.3" r="7"><title>Expiry 2023-12-14: skipped (ratio 0.644 vs 0.702). Rule total ₹11,635, every-expiry total ₹23,630</title></circle>
+<circle class="hit" cx="202.2" cy="281.1" r="7"><title>Expiry 2023-12-21: sold, +25.5 pts, ₹+1,273 a lot. Rule total ₹12,908, every-expiry total ₹24,903</title></circle>
+<circle class="hit" cx="205.0" cy="281.1" r="7"><title>Expiry 2023-12-28: skipped (ratio 0.598 vs 0.679). Rule total ₹12,908, every-expiry total ₹24,614</title></circle>
+<circle class="hit" cx="207.8" cy="281.1" r="7"><title>Expiry 2024-01-04: skipped (ratio 0.599 vs 0.679). Rule total ₹12,908, every-expiry total ₹22,200</title></circle>
+<circle class="hit" cx="210.5" cy="274.3" r="7"><title>Expiry 2024-01-11: sold, +76.0 pts, ₹+3,799 a lot. Rule total ₹16,707, every-expiry total ₹25,999</title></circle>
+<circle class="hit" cx="213.3" cy="268.3" r="7"><title>Expiry 2024-01-18: sold, +68.5 pts, ₹+3,425 a lot. Rule total ₹20,132, every-expiry total ₹29,424</title></circle>
+<circle class="hit" cx="216.0" cy="263.3" r="7"><title>Expiry 2024-01-25: sold, +55.5 pts, ₹+2,775 a lot. Rule total ₹22,907, every-expiry total ₹32,199</title></circle>
+<circle class="hit" cx="218.8" cy="245.6" r="7"><title>Expiry 2024-02-01: sold, +200.0 pts, ₹+9,999 a lot. Rule total ₹32,906, every-expiry total ₹42,198</title></circle>
+<circle class="hit" cx="221.6" cy="252.9" r="7"><title>Expiry 2024-02-08: sold, -81.9 pts, ₹-4,095 a lot. Rule total ₹28,811, every-expiry total ₹38,103</title></circle>
+<circle class="hit" cx="224.3" cy="244.7" r="7"><title>Expiry 2024-02-15: sold, +91.4 pts, ₹+4,570 a lot. Rule total ₹33,381, every-expiry total ₹42,673</title></circle>
+<circle class="hit" cx="227.1" cy="244.7" r="7"><title>Expiry 2024-02-22: skipped (ratio 0.703 vs 0.717). Rule total ₹33,381, every-expiry total ₹41,873</title></circle>
+<circle class="hit" cx="229.9" cy="232.3" r="7"><title>Expiry 2024-02-29: sold, +139.9 pts, ₹+6,994 a lot. Rule total ₹40,375, every-expiry total ₹48,867</title></circle>
+<circle class="hit" cx="232.6" cy="232.3" r="7"><title>Expiry 2024-03-07: skipped (ratio 0.705 vs 0.72). Rule total ₹40,375, every-expiry total ₹53,620</title></circle>
+<circle class="hit" cx="235.4" cy="230.5" r="7"><title>Expiry 2024-03-14: sold, +21.2 pts, ₹+1,060 a lot. Rule total ₹41,435, every-expiry total ₹54,680</title></circle>
+<circle class="hit" cx="238.2" cy="231.9" r="7"><title>Expiry 2024-03-21: sold, -15.8 pts, ₹-792 a lot. Rule total ₹40,643, every-expiry total ₹53,888</title></circle>
+<circle class="hit" cx="240.9" cy="240.5" r="7"><title>Expiry 2024-03-28: sold, -97.8 pts, ₹-4,889 a lot. Rule total ₹35,754, every-expiry total ₹48,999</title></circle>
+<circle class="hit" cx="243.7" cy="235.7" r="7"><title>Expiry 2024-04-04: sold, +54.1 pts, ₹+2,706 a lot. Rule total ₹38,460, every-expiry total ₹51,705</title></circle>
+<circle class="hit" cx="246.1" cy="234.1" r="7"><title>Expiry 2024-04-10: sold, +18.3 pts, ₹+916 a lot. Rule total ₹39,376, every-expiry total ₹52,621</title></circle>
+<circle class="hit" cx="249.2" cy="234.1" r="7"><title>Expiry 2024-04-18: sold, +0.3 pts, ₹+18 a lot. Rule total ₹39,394, every-expiry total ₹52,639</title></circle>
+<circle class="hit" cx="252.0" cy="238.9" r="7"><title>Expiry 2024-04-25: sold, -54.4 pts, ₹-2,721 a lot. Rule total ₹36,673, every-expiry total ₹49,918</title></circle>
+<circle class="hit" cx="254.7" cy="233.5" r="7"><title>Expiry 2024-05-02: sold, +121.8 pts, ₹+3,046 a lot. Rule total ₹39,719, every-expiry total ₹52,964</title></circle>
+<circle class="hit" cx="257.5" cy="233.5" r="7"><title>Expiry 2024-05-09: skipped (ratio 0.601 vs 0.764). Rule total ₹39,719, every-expiry total ₹47,903</title></circle>
+<circle class="hit" cx="260.3" cy="233.5" r="7"><title>Expiry 2024-05-16: skipped (ratio 0.5 vs 0.764). Rule total ₹39,719, every-expiry total ₹46,248</title></circle>
+<circle class="hit" cx="263.0" cy="233.5" r="7"><title>Expiry 2024-05-23: skipped (ratio 0.464 vs 0.764). Rule total ₹39,719, every-expiry total ₹40,501</title></circle>
+<circle class="hit" cx="265.8" cy="233.5" r="7"><title>Expiry 2024-05-30: skipped (ratio 0.511 vs 0.764). Rule total ₹39,719, every-expiry total ₹39,528</title></circle>
+<circle class="hit" cx="268.6" cy="228.9" r="7"><title>Expiry 2024-06-06: sold, +104.4 pts, ₹+2,610 a lot. Rule total ₹42,329, every-expiry total ₹42,138</title></circle>
+<circle class="hit" cx="271.3" cy="225.8" r="7"><title>Expiry 2024-06-13: sold, +68.1 pts, ₹+1,702 a lot. Rule total ₹44,031, every-expiry total ₹43,840</title></circle>
+<circle class="hit" cx="274.1" cy="225.8" r="7"><title>Expiry 2024-06-20: skipped (ratio 0.739 vs 0.775). Rule total ₹44,031, every-expiry total ₹45,816</title></circle>
+<circle class="hit" cx="276.9" cy="225.8" r="7"><title>Expiry 2024-06-27: skipped (ratio 0.726 vs 0.775). Rule total ₹44,031, every-expiry total ₹44,682</title></circle>
+<circle class="hit" cx="279.6" cy="225.8" r="7"><title>Expiry 2024-07-04: skipped (ratio 0.744 vs 0.775). Rule total ₹44,031, every-expiry total ₹48,282</title></circle>
+<circle class="hit" cx="282.4" cy="225.8" r="7"><title>Expiry 2024-07-11: skipped (ratio 0.615 vs 0.775). Rule total ₹44,031, every-expiry total ₹51,182</title></circle>
+<circle class="hit" cx="285.2" cy="225.8" r="7"><title>Expiry 2024-07-18: skipped (ratio 0.643 vs 0.775). Rule total ₹44,031, every-expiry total ₹49,605</title></circle>
+<circle class="hit" cx="287.9" cy="219.3" r="7"><title>Expiry 2024-07-25: sold, +148.3 pts, ₹+3,709 a lot. Rule total ₹47,740, every-expiry total ₹53,314</title></circle>
+<circle class="hit" cx="290.7" cy="214.9" r="7"><title>Expiry 2024-08-01: sold, +98.8 pts, ₹+2,471 a lot. Rule total ₹50,211, every-expiry total ₹55,785</title></circle>
+<circle class="hit" cx="293.4" cy="214.9" r="7"><title>Expiry 2024-08-08: skipped (ratio 0.714 vs 0.775). Rule total ₹50,211, every-expiry total ₹55,526</title></circle>
+<circle class="hit" cx="295.8" cy="214.9" r="7"><title>Expiry 2024-08-14: skipped (ratio 0.712 vs 0.775). Rule total ₹50,211, every-expiry total ₹59,641</title></circle>
+<circle class="hit" cx="299.0" cy="214.9" r="7"><title>Expiry 2024-08-22: skipped (ratio 0.562 vs 0.775). Rule total ₹50,211, every-expiry total ₹60,925</title></circle>
+<circle class="hit" cx="301.7" cy="214.9" r="7"><title>Expiry 2024-08-29: skipped (ratio 0.54 vs 0.775). Rule total ₹50,211, every-expiry total ₹61,247</title></circle>
+<circle class="hit" cx="304.5" cy="214.9" r="7"><title>Expiry 2024-09-05: skipped (ratio 0.599 vs 0.775). Rule total ₹50,211, every-expiry total ₹63,190</title></circle>
+<circle class="hit" cx="307.3" cy="214.9" r="7"><title>Expiry 2024-09-12: skipped (ratio 0.663 vs 0.775). Rule total ₹50,211, every-expiry total ₹54,412</title></circle>
+<circle class="hit" cx="310.0" cy="206.3" r="7"><title>Expiry 2024-09-19: sold, +194.1 pts, ₹+4,852 a lot. Rule total ₹55,063, every-expiry total ₹59,264</title></circle>
+<circle class="hit" cx="312.8" cy="206.3" r="7"><title>Expiry 2024-09-26: skipped (ratio 0.645 vs 0.78). Rule total ₹55,063, every-expiry total ₹57,128</title></circle>
+<circle class="hit" cx="315.6" cy="206.3" r="7"><title>Expiry 2024-10-03: skipped (ratio 0.754 vs 0.78). Rule total ₹55,063, every-expiry total ₹46,949</title></circle>
+<circle class="hit" cx="318.3" cy="198.6" r="7"><title>Expiry 2024-10-10: sold, +173.1 pts, ₹+4,328 a lot. Rule total ₹59,391, every-expiry total ₹51,277</title></circle>
+<circle class="hit" cx="321.1" cy="198.6" r="7"><title>Expiry 2024-10-17: skipped (ratio 0.669 vs 0.783). Rule total ₹59,391, every-expiry total ₹49,604</title></circle>
+<circle class="hit" cx="323.9" cy="198.6" r="7"><title>Expiry 2024-10-24: skipped (ratio 0.703 vs 0.78). Rule total ₹59,391, every-expiry total ₹52,191</title></circle>
+<circle class="hit" cx="326.6" cy="198.6" r="7"><title>Expiry 2024-10-31: skipped (ratio 0.629 vs 0.767). Rule total ₹59,391, every-expiry total ₹52,209</title></circle>
+<circle class="hit" cx="329.4" cy="204.3" r="7"><title>Expiry 2024-11-07: sold, -128.4 pts, ₹-3,209 a lot. Rule total ₹56,182, every-expiry total ₹49,000</title></circle>
+<circle class="hit" cx="332.2" cy="197.0" r="7"><title>Expiry 2024-11-14: sold, +163.0 pts, ₹+4,074 a lot. Rule total ₹60,256, every-expiry total ₹53,074</title></circle>
+<circle class="hit" cx="334.9" cy="194.4" r="7"><title>Expiry 2024-11-21: sold, +58.5 pts, ₹+1,463 a lot. Rule total ₹61,719, every-expiry total ₹54,537</title></circle>
+<circle class="hit" cx="337.7" cy="194.4" r="7"><title>Expiry 2024-11-28: skipped (ratio 0.695 vs 0.78). Rule total ₹61,719, every-expiry total ₹49,922</title></circle>
+<circle class="hit" cx="340.4" cy="195.8" r="7"><title>Expiry 2024-12-05: sold, -31.0 pts, ₹-775 a lot. Rule total ₹60,944, every-expiry total ₹49,147</title></circle>
+<circle class="hit" cx="343.2" cy="195.8" r="7"><title>Expiry 2024-12-12: skipped (ratio 0.625 vs 0.783). Rule total ₹60,944, every-expiry total ₹49,731</title></circle>
+<circle class="hit" cx="346.0" cy="195.8" r="7"><title>Expiry 2024-12-19: skipped (ratio 0.677 vs 0.783). Rule total ₹60,944, every-expiry total ₹47,129</title></circle>
+<circle class="hit" cx="348.7" cy="195.8" r="7"><title>Expiry 2024-12-26: skipped (ratio 0.691 vs 0.783). Rule total ₹60,944, every-expiry total ₹50,423</title></circle>
+<circle class="hit" cx="351.5" cy="222.6" r="7"><title>Expiry 2025-01-02: sold, -201.5 pts, ₹-15,112 a lot. Rule total ₹45,832, every-expiry total ₹35,311</title></circle>
+<circle class="hit" cx="354.3" cy="222.6" r="7"><title>Expiry 2025-01-09: skipped (ratio 0.678 vs 0.784). Rule total ₹45,832, every-expiry total ₹32,956</title></circle>
+<circle class="hit" cx="357.0" cy="222.6" r="7"><title>Expiry 2025-01-16: skipped (ratio 0.498 vs 0.784). Rule total ₹45,832, every-expiry total ₹32,591</title></circle>
+<circle class="hit" cx="359.8" cy="222.6" r="7"><title>Expiry 2025-01-23: skipped (ratio 0.502 vs 0.784). Rule total ₹45,832, every-expiry total ₹37,341</title></circle>
+<circle class="hit" cx="362.6" cy="214.1" r="7"><title>Expiry 2025-01-30: sold, +192.9 pts, ₹+4,824 a lot. Rule total ₹50,656, every-expiry total ₹42,165</title></circle>
+<circle class="hit" cx="365.3" cy="214.1" r="7"><title>Expiry 2025-02-06: skipped (ratio 0.692 vs 0.78). Rule total ₹50,656, every-expiry total ₹45,510</title></circle>
+<circle class="hit" cx="368.1" cy="194.1" r="7"><title>Expiry 2025-02-13: sold, +150.2 pts, ₹+11,267 a lot. Rule total ₹61,923, every-expiry total ₹56,777</title></circle>
+<circle class="hit" cx="370.9" cy="194.1" r="7"><title>Expiry 2025-02-20: skipped (ratio 0.738 vs 0.784). Rule total ₹61,923, every-expiry total ₹66,027</title></circle>
+<circle class="hit" cx="373.6" cy="194.1" r="7"><title>Expiry 2025-02-27: skipped (ratio 0.631 vs 0.784). Rule total ₹61,923, every-expiry total ₹74,575</title></circle>
+<circle class="hit" cx="376.4" cy="199.8" r="7"><title>Expiry 2025-03-06: sold, -43.0 pts, ₹-3,222 a lot. Rule total ₹58,701, every-expiry total ₹71,353</title></circle>
+<circle class="hit" cx="379.1" cy="199.8" r="7"><title>Expiry 2025-03-13: skipped (ratio 0.702 vs 0.789). Rule total ₹58,701, every-expiry total ₹77,283</title></circle>
+<circle class="hit" cx="381.9" cy="217.3" r="7"><title>Expiry 2025-03-20: sold, -131.6 pts, ₹-9,867 a lot. Rule total ₹48,834, every-expiry total ₹67,416</title></circle>
+<circle class="hit" cx="384.7" cy="208.7" r="7"><title>Expiry 2025-03-27: sold, +64.6 pts, ₹+4,844 a lot. Rule total ₹53,678, every-expiry total ₹72,260</title></circle>
+<circle class="hit" cx="387.4" cy="208.7" r="7"><title>Expiry 2025-04-03: skipped (ratio 0.741 vs 0.789). Rule total ₹53,678, every-expiry total ₹75,665</title></circle>
+<circle class="hit" cx="389.8" cy="183.8" r="7"><title>Expiry 2025-04-09: sold, +186.9 pts, ₹+14,014 a lot. Rule total ₹67,692, every-expiry total ₹89,679</title></circle>
+<circle class="hit" cx="393.0" cy="183.8" r="7"><title>Expiry 2025-04-17: skipped (ratio 0.764 vs 0.801). Rule total ₹67,692, every-expiry total ₹72,671</title></circle>
+<circle class="hit" cx="395.7" cy="183.8" r="7"><title>Expiry 2025-04-24: skipped (ratio 0.567 vs 0.789). Rule total ₹67,692, every-expiry total ₹75,016</title></circle>
+<circle class="hit" cx="398.1" cy="183.8" r="7"><title>Expiry 2025-04-30: skipped (ratio 0.42 vs 0.772). Rule total ₹67,692, every-expiry total ₹81,904</title></circle>
+<circle class="hit" cx="401.3" cy="183.8" r="7"><title>Expiry 2025-05-08: skipped (ratio 0.42 vs 0.765). Rule total ₹67,692, every-expiry total ₹81,359</title></circle>
+<circle class="hit" cx="404.0" cy="183.8" r="7"><title>Expiry 2025-05-15: skipped (ratio 0.694 vs 0.765). Rule total ₹67,692, every-expiry total ₹64,073</title></circle>
+<circle class="hit" cx="406.8" cy="180.3" r="7"><title>Expiry 2025-05-22: sold, +26.4 pts, ₹+1,978 a lot. Rule total ₹69,670, every-expiry total ₹66,051</title></circle>
+<circle class="hit" cx="409.6" cy="162.3" r="7"><title>Expiry 2025-05-29: sold, +135.4 pts, ₹+10,153 a lot. Rule total ₹79,823, every-expiry total ₹76,204</title></circle>
+<circle class="hit" cx="412.3" cy="162.3" r="7"><title>Expiry 2025-06-05: skipped (ratio 0.659 vs 0.788). Rule total ₹79,823, every-expiry total ₹76,649</title></circle>
+<circle class="hit" cx="415.1" cy="162.3" r="7"><title>Expiry 2025-06-12: skipped (ratio 0.682 vs 0.772). Rule total ₹79,823, every-expiry total ₹67,780</title></circle>
+<circle class="hit" cx="417.9" cy="162.3" r="7"><title>Expiry 2025-06-19: skipped (ratio 0.735 vs 0.765). Rule total ₹79,823, every-expiry total ₹79,261</title></circle>
+<circle class="hit" cx="420.6" cy="162.3" r="7"><title>Expiry 2025-06-26: skipped (ratio 0.658 vs 0.765). Rule total ₹79,823, every-expiry total ₹66,703</title></circle>
+<circle class="hit" cx="423.4" cy="162.3" r="7"><title>Expiry 2025-07-03: skipped (ratio 0.68 vs 0.765). Rule total ₹79,823, every-expiry total ₹73,214</title></circle>
+<circle class="hit" cx="426.1" cy="162.3" r="7"><title>Expiry 2025-07-10: skipped (ratio 0.671 vs 0.765). Rule total ₹79,823, every-expiry total ₹71,686</title></circle>
+<circle class="hit" cx="428.9" cy="162.3" r="7"><title>Expiry 2025-07-17: skipped (ratio 0.594 vs 0.765). Rule total ₹79,823, every-expiry total ₹72,687</title></circle>
+<circle class="hit" cx="431.7" cy="162.3" r="7"><title>Expiry 2025-07-24: skipped (ratio 0.599 vs 0.765). Rule total ₹79,823, every-expiry total ₹69,541</title></circle>
+<circle class="hit" cx="434.4" cy="162.3" r="7"><title>Expiry 2025-07-31: skipped (ratio 0.673 vs 0.756). Rule total ₹79,823, every-expiry total ₹71,962</title></circle>
+<circle class="hit" cx="437.2" cy="149.9" r="7"><title>Expiry 2025-08-07: sold, +93.1 pts, ₹+6,983 a lot. Rule total ₹86,806, every-expiry total ₹78,945</title></circle>
+<circle class="hit" cx="440.0" cy="149.9" r="7"><title>Expiry 2025-08-14: skipped (ratio 0.658 vs 0.756). Rule total ₹86,806, every-expiry total ₹85,584</title></circle>
+<circle class="hit" cx="442.7" cy="149.9" r="7"><title>Expiry 2025-08-21: skipped (ratio 0.582 vs 0.756). Rule total ₹86,806, every-expiry total ₹90,867</title></circle>
+<circle class="hit" cx="445.5" cy="149.9" r="7"><title>Expiry 2025-08-28: skipped (ratio 0.727 vs 0.756). Rule total ₹86,806, every-expiry total ₹85,970</title></circle>
+<circle class="hit" cx="447.5" cy="149.9" r="7"><title>Expiry 2025-09-02: skipped (ratio 0.611 vs 0.756). Rule total ₹86,806, every-expiry total ₹88,411</title></circle>
+<circle class="hit" cx="450.2" cy="149.9" r="7"><title>Expiry 2025-09-09: skipped (ratio 0.739 vs 0.756). Rule total ₹86,806, every-expiry total ₹88,578</title></circle>
+<circle class="hit" cx="453.0" cy="149.9" r="7"><title>Expiry 2025-09-16: skipped (ratio 0.657 vs 0.756). Rule total ₹86,806, every-expiry total ₹82,176</title></circle>
+<circle class="hit" cx="455.8" cy="149.9" r="7"><title>Expiry 2025-09-23: skipped (ratio 0.651 vs 0.743). Rule total ₹86,806, every-expiry total ₹87,763</title></circle>
+<circle class="hit" cx="458.5" cy="149.9" r="7"><title>Expiry 2025-09-30: skipped (ratio 0.699 vs 0.743). Rule total ₹86,806, every-expiry total ₹93,784</title></circle>
+<circle class="hit" cx="461.3" cy="149.9" r="7"><title>Expiry 2025-10-07: skipped (ratio 0.589 vs 0.739). Rule total ₹86,806, every-expiry total ₹99,961</title></circle>
+<circle class="hit" cx="464.1" cy="149.9" r="7"><title>Expiry 2025-10-14: skipped (ratio 0.65 vs 0.738). Rule total ₹86,806, every-expiry total ₹100,339</title></circle>
+<circle class="hit" cx="466.4" cy="147.8" r="7"><title>Expiry 2025-10-20: sold, +16.0 pts, ₹+1,203 a lot. Rule total ₹88,009, every-expiry total ₹101,542</title></circle>
+<circle class="hit" cx="469.6" cy="130.1" r="7"><title>Expiry 2025-10-28: sold, +133.1 pts, ₹+9,982 a lot. Rule total ₹97,991, every-expiry total ₹111,524</title></circle>
+<circle class="hit" cx="472.3" cy="130.1" r="7"><title>Expiry 2025-11-04: skipped (ratio 0.692 vs 0.745). Rule total ₹97,991, every-expiry total ₹110,463</title></circle>
+<circle class="hit" cx="475.1" cy="130.1" r="7"><title>Expiry 2025-11-11: skipped (ratio 0.682 vs 0.739). Rule total ₹97,991, every-expiry total ₹109,422</title></circle>
+<circle class="hit" cx="477.9" cy="130.1" r="7"><title>Expiry 2025-11-18: skipped (ratio 0.688 vs 0.738). Rule total ₹97,991, every-expiry total ₹112,333</title></circle>
+<circle class="hit" cx="480.6" cy="130.1" r="7"><title>Expiry 2025-11-25: skipped (ratio 0.696 vs 0.735). Rule total ₹97,991, every-expiry total ₹118,442</title></circle>
+<circle class="hit" cx="483.4" cy="130.1" r="7"><title>Expiry 2025-12-02: skipped (ratio 0.655 vs 0.735). Rule total ₹97,991, every-expiry total ₹114,971</title></circle>
+<circle class="hit" cx="486.2" cy="130.1" r="7"><title>Expiry 2025-12-09: skipped (ratio 0.699 vs 0.728). Rule total ₹97,991, every-expiry total ₹115,933</title></circle>
+<circle class="hit" cx="488.9" cy="130.1" r="7"><title>Expiry 2025-12-16: skipped (ratio 0.697 vs 0.728). Rule total ₹97,991, every-expiry total ₹110,168</title></circle>
+<circle class="hit" cx="491.7" cy="130.1" r="7"><title>Expiry 2025-12-23: skipped (ratio 0.67 vs 0.728). Rule total ₹97,991, every-expiry total ₹115,837</title></circle>
+<circle class="hit" cx="494.5" cy="130.1" r="7"><title>Expiry 2025-12-30: skipped (ratio 0.623 vs 0.728). Rule total ₹97,991, every-expiry total ₹122,111</title></circle>
+<circle class="hit" cx="497.2" cy="130.1" r="7"><title>Expiry 2026-01-06: skipped (ratio 0.601 vs 0.706). Rule total ₹97,991, every-expiry total ₹123,687</title></circle>
+<circle class="hit" cx="500.0" cy="122.4" r="7"><title>Expiry 2026-01-13: sold, +66.3 pts, ₹+4,307 a lot. Rule total ₹102,298, every-expiry total ₹127,994</title></circle>
+<circle class="hit" cx="502.8" cy="122.4" r="7"><title>Expiry 2026-01-20: skipped (ratio 0.685 vs 0.728). Rule total ₹102,298, every-expiry total ₹112,327</title></circle>
+<circle class="hit" cx="505.5" cy="111.8" r="7"><title>Expiry 2026-01-27: sold, +92.4 pts, ₹+6,008 a lot. Rule total ₹108,306, every-expiry total ₹118,335</title></circle>
+<circle class="hit" cx="508.3" cy="162.9" r="7"><title>Expiry 2026-02-03: sold, -443.2 pts, ₹-28,807 a lot. Rule total ₹79,499, every-expiry total ₹89,528</title></circle>
+<circle class="hit" cx="511.1" cy="162.9" r="7"><title>Expiry 2026-02-10: skipped (ratio 0.715 vs 0.735). Rule total ₹79,499, every-expiry total ₹92,951</title></circle>
+<circle class="hit" cx="513.8" cy="162.9" r="7"><title>Expiry 2026-02-17: skipped (ratio 0.726 vs 0.728). Rule total ₹79,499, every-expiry total ₹101,206</title></circle>
+<circle class="hit" cx="516.6" cy="175.4" r="7"><title>Expiry 2026-02-24: sold, -108.2 pts, ₹-7,034 a lot. Rule total ₹72,465, every-expiry total ₹94,172</title></circle>
+<circle class="hit" cx="519.0" cy="190.0" r="7"><title>Expiry 2026-03-02: sold, -126.9 pts, ₹-8,249 a lot. Rule total ₹64,216, every-expiry total ₹85,923</title></circle>
+<circle class="hit" cx="522.1" cy="171.2" r="7"><title>Expiry 2026-03-10: sold, +163.2 pts, ₹+10,606 a lot. Rule total ₹74,822, every-expiry total ₹96,529</title></circle>
+<circle class="hit" cx="524.9" cy="157.2" r="7"><title>Expiry 2026-03-17: sold, +121.6 pts, ₹+7,907 a lot. Rule total ₹82,729, every-expiry total ₹104,436</title></circle>
+<circle class="hit" cx="527.6" cy="159.3" r="7"><title>Expiry 2026-03-24: sold, -18.6 pts, ₹-1,209 a lot. Rule total ₹81,520, every-expiry total ₹103,227</title></circle>
+<circle class="hit" cx="530.0" cy="164.7" r="7"><title>Expiry 2026-03-30: sold, -47.0 pts, ₹-3,057 a lot. Rule total ₹78,463, every-expiry total ₹100,170</title></circle>
+<circle class="hit" cx="533.2" cy="143.2" r="7"><title>Expiry 2026-04-07: sold, +186.7 pts, ₹+12,132 a lot. Rule total ₹90,595, every-expiry total ₹112,302</title></circle>
+<circle class="hit" cx="535.5" cy="135.0" r="7"><title>Expiry 2026-04-13: sold, +70.8 pts, ₹+4,604 a lot. Rule total ₹95,199, every-expiry total ₹116,906</title></circle>
+<circle class="hit" cx="538.7" cy="131.4" r="7"><title>Expiry 2026-04-21: sold, +31.6 pts, ₹+2,054 a lot. Rule total ₹97,253, every-expiry total ₹118,960</title></circle>
+<circle class="hit" cx="541.5" cy="131.4" r="7"><title>Expiry 2026-04-28: skipped (ratio 0.672 vs 0.74). Rule total ₹97,253, every-expiry total ₹124,080</title></circle>
+<circle class="hit" cx="544.2" cy="113.9" r="7"><title>Expiry 2026-05-05: sold, +151.8 pts, ₹+9,865 a lot. Rule total ₹107,118, every-expiry total ₹133,945</title></circle>
+<circle class="hit" cx="547.0" cy="113.9" r="7"><title>Expiry 2026-05-12: skipped (ratio 0.739 vs 0.747). Rule total ₹107,118, every-expiry total ₹119,709</title></circle>
+<circle class="hit" cx="549.8" cy="92.8" r="7"><title>Expiry 2026-05-19: sold, +182.2 pts, ₹+11,844 a lot. Rule total ₹118,962, every-expiry total ₹131,553</title></circle>
+<circle class="hit" cx="552.5" cy="92.8" r="7"><title>Expiry 2026-05-26: skipped (ratio 0.664 vs 0.747). Rule total ₹118,962, every-expiry total ₹133,321</title></circle>
+<circle class="hit" cx="555.3" cy="81.9" r="7"><title>Expiry 2026-06-02: sold, +94.5 pts, ₹+6,141 a lot. Rule total ₹125,103, every-expiry total ₹139,462</title></circle>
+<circle class="hit" cx="558.0" cy="76.2" r="7"><title>Expiry 2026-06-09: sold, +49.8 pts, ₹+3,237 a lot. Rule total ₹128,340, every-expiry total ₹142,699</title></circle>
+<circle class="hit" cx="560.8" cy="72.9" r="7"><title>Expiry 2026-06-16: sold, +28.4 pts, ₹+1,849 a lot. Rule total ₹130,189, every-expiry total ₹144,548</title></circle>
+<circle class="hit" cx="563.6" cy="72.9" r="7"><title>Expiry 2026-06-23: skipped (ratio 0.662 vs 0.748). Rule total ₹130,189, every-expiry total ₹134,730</title></circle>
+<circle class="hit" cx="566.3" cy="64.8" r="7"><title>Expiry 2026-06-30: sold, +70.3 pts, ₹+4,570 a lot. Rule total ₹134,759, every-expiry total ₹139,300</title></circle>
+<circle class="hit" cx="569.1" cy="64.8" r="7"><title>Expiry 2026-07-07: skipped (ratio 0.659 vs 0.753). Rule total ₹134,759, every-expiry total ₹143,481</title></circle>
+<circle class="hit" cx="571.9" cy="63.8" r="7"><title>Expiry 2026-07-14: sold, +8.7 pts, ₹+563 a lot. Rule total ₹135,322, every-expiry total ₹144,044</title></circle>
+<circle class="hit" cx="574.6" cy="63.8" r="7"><title>Expiry 2026-07-21: skipped (ratio 0.734 vs 0.774). Rule total ₹135,322, every-expiry total ₹149,175</title></circle>
+<circle class="hit" cx="577.4" cy="63.8" r="7"><title>Expiry 2026-07-28: skipped (ratio 0.658 vs 0.774). Rule total ₹135,322, every-expiry total ₹156,134</title></circle>
+<circle class="hit" cx="580.2" cy="57.8" r="7"><title>Expiry 2026-08-04: sold, +52.1 pts, ₹+3,384 a lot. Rule total ₹138,706, every-expiry total ₹159,518</title></circle>
+<circle class="hit" cx="582.9" cy="55.8" r="7"><title>Expiry 2026-08-11: sold, +17.0 pts, ₹+1,107 a lot. Rule total ₹139,813, every-expiry total ₹160,625</title></circle>
+<circle class="hit" cx="585.7" cy="55.8" r="7"><title>Expiry 2026-08-18: skipped (ratio 0.755 vs 0.78). Rule total ₹139,813, every-expiry total ₹159,429</title></circle>
+<circle class="hit" cx="588.5" cy="55.8" r="7"><title>Expiry 2026-08-25: skipped (ratio 0.682 vs 0.78). Rule total ₹139,813, every-expiry total ₹158,212</title></circle>
+<circle class="hit" cx="591.2" cy="45.3" r="7"><title>Expiry 2026-09-01: sold, +91.0 pts, ₹+5,914 a lot. Rule total ₹145,727, every-expiry total ₹164,126</title></circle>
+<circle class="hit" cx="594.0" cy="45.3" r="7"><title>Expiry 2026-09-08: skipped (ratio 0.764 vs 0.789). Rule total ₹145,727, every-expiry total ₹161,436</title></circle>
+<circle class="hit" cx="596.8" cy="54.2" r="7"><title>Expiry 2026-09-15: sold, -77.2 pts, ₹-5,019 a lot. Rule total ₹140,708, every-expiry total ₹156,417</title></circle>
+<circle class="hit" cx="599.5" cy="47.4" r="7"><title>Expiry 2026-09-22: sold, +59.0 pts, ₹+3,838 a lot. Rule total ₹144,546, every-expiry total ₹160,255</title></circle>
+<circle class="hit" cx="602.3" cy="39.6" r="7"><title>Expiry 2026-09-29: sold, +67.6 pts, ₹+4,395 a lot. Rule total ₹148,941, every-expiry total ₹164,650</title></circle>
+<circle class="hit" cx="605.0" cy="39.6" r="7"><title>Expiry 2026-10-06: skipped (ratio 0.771 vs 0.796). Rule total ₹148,941, every-expiry total ₹160,204</title></circle>
+<circle class="hit" cx="607.8" cy="39.6" r="7"><title>Expiry 2026-10-13: skipped (ratio 0.705 vs 0.796). Rule total ₹148,941, every-expiry total ₹145,593</title></circle>
+<circle class="hit" cx="610.2" cy="48.9" r="7"><title>Expiry 2026-10-19: sold, -80.8 pts, ₹-5,250 a lot. Rule total ₹143,691, every-expiry total ₹140,343</title></circle>
+<circle class="hit" cx="613.3" cy="48.9" r="7"><title>Expiry 2026-10-27: skipped (ratio 0.766 vs 0.796). Rule total ₹143,691, every-expiry total ₹152,301</title></circle>
+<circle class="hit" cx="616.1" cy="48.9" r="7"><title>Expiry 2026-11-03: skipped (ratio 0.784 vs 0.796). Rule total ₹143,691, every-expiry total ₹140,233</title></circle>
+<circle class="hit" cx="618.5" cy="21.3" r="7"><title>Expiry 2026-11-09: sold, +239.7 pts, ₹+15,582 a lot. Rule total ₹159,273, every-expiry total ₹155,815</title></circle>
+<circle class="hit" cx="621.6" cy="21.3" r="7"><title>Expiry 2026-11-17: skipped (ratio 0.717 vs 0.798). Rule total ₹159,273, every-expiry total ₹161,501</title></circle>
+<circle class="hit" cx="624.0" cy="46.9" r="7"><title>Expiry 2026-11-23: sold, -222.1 pts, ₹-14,436 a lot. Rule total ₹144,837, every-expiry total ₹147,065</title></circle>
+</svg>
