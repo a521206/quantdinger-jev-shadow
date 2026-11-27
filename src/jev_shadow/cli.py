@@ -19,6 +19,73 @@ from .database import table_names
 from .runner import run_jsonl
 
 
+def _add_rich_premium_parser(subparsers: argparse._SubParsersAction) -> None:
+    parser = subparsers.add_parser(
+        "rich-premium", help="research-only rich-premium straddle study on NSE/BSE daily files"
+    )
+    actions = parser.add_subparsers(dest="rich_premium_command", required=True)
+    commands = {
+        "fetch": "download index history, India VIX and F&O bhavcopies",
+        "build": "build daily option, futures and index panels from the raw files",
+        "backtest": "score the frozen rule per split and write the cycle tables",
+        "track": "update the forward paper ledger, or replay it over history",
+    }
+    for name, help_text in commands.items():
+        sub = actions.add_parser(name, help=help_text)
+        sub.add_argument(
+            "--data-dir",
+            type=Path,
+            help="research layout: raw files under <dir>/raw, panels directly in <dir>",
+        )
+        sub.add_argument("--raw-dir", type=Path, help="override the raw download directory")
+        sub.add_argument("--panel-dir", type=Path, help="override the parquet panel directory")
+        if name == "fetch":
+            sub.add_argument("--start", default="2012-01-01", help="first trading day, YYYY-MM-DD")
+            sub.add_argument("--retry-poi", action="store_true")
+        if name == "backtest":
+            sub.add_argument("--output-dir", type=Path)
+            sub.add_argument("--index", action="append", choices=["nifty", "banknifty", "sensex"])
+        if name == "track":
+            sub.add_argument("--forward-dir", type=Path)
+            sub.add_argument("--replay", action="store_true", help="replay 2025-01-01..2026-11-23")
+            sub.add_argument(
+                "--lane-dir", type=Path, help="compare the replay with these cycle CSVs"
+            )
+
+
+def _run_rich_premium(args: argparse.Namespace) -> int:
+    from datetime import date
+
+    from .rich_premium.paths import DEFAULT_OUTPUT, DEFAULT_PATHS, DataPaths
+
+    base = DataPaths.from_data_dir(args.data_dir) if args.data_dir else DEFAULT_PATHS
+    paths = DataPaths(raw=args.raw_dir or base.raw, panel=args.panel_dir or base.panel)
+    command = args.rich_premium_command
+    if command == "fetch":
+        from .rich_premium.fetch import fetch_all
+
+        fetch_all(paths.raw, date.fromisoformat(args.start), args.retry_poi)
+    elif command == "build":
+        from .rich_premium.panel import build_panels
+
+        build_panels(paths)
+    elif command == "backtest":
+        from .rich_premium.backtest import run_backtest
+
+        indices = args.index or ["nifty", "banknifty", "sensex"]
+        run_backtest(paths.panel, args.output_dir or DEFAULT_OUTPUT / "backtest", indices)
+    elif command == "track":
+        from .rich_premium import forward
+
+        forward_dir = args.forward_dir or DEFAULT_OUTPUT / "forward"
+        if args.replay:
+            lanes = forward.load_lanes(args.lane_dir) if args.lane_dir else None
+            print(forward.run_replay(paths, forward_dir / "selftest", lanes), end="")
+        else:
+            print(forward.run_forward(paths, forward_dir), end="")
+    return 0
+
+
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(prog="jev-shadow")
     subparsers = parser.add_subparsers(dest="command", required=True)
@@ -45,7 +112,11 @@ def main(argv: list[str] | None = None) -> int:
     )
     analysis_parser.add_argument("--input", type=Path, required=True)
     analysis_parser.add_argument("--oracle-audit", type=Path, help="post-hoc oracle metadata JSONL")
+    _add_rich_premium_parser(subparsers)
     args = parser.parse_args(argv)
+
+    if args.command == "rich-premium":
+        return _run_rich_premium(args)
 
     if args.command == "build-contexts":
         if not args.input.is_file():
